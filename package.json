@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://username.github.io/repo-name",
+  "homepage": "https://mikezhylka.github.io/vinyla-shop",
   "scripts": {
     "deploy": "gh-pages -d build",
     "predeploy": "npm run build",

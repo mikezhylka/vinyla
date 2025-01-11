@@ -1,0 +1,114 @@
+@use "/src/styles/utils/_mixins.scss" as *;
+@use "/src/styles/utils/colors" as *;
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 72px;
+  margin-block: 56px 120px;
+
+  @include on-tablet {
+    margin-bottom: 9px;
+  }
+
+  @include on-desktop {
+    margin-block: 56px 105px;
+  }
+
+  &__pages {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+
+    @include on-desktop {
+      gap: 4px;
+    }
+  }
+
+  &__prev-page {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $white;
+    border-radius: 50%;
+    background-color: inherit;
+    
+    background-image: url('/src/images/icons/previous-page-active.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+  
+    @include on-desktop {
+      width: 48px;
+      height: 48px;
+    }
+
+    &:hover {
+      cursor: pointer;
+      background-color: $neutral-gray;
+    }
+
+    &--disabled {
+      background-image: url('/src/images/icons/previous-page-disabled.svg');
+      pointer-events: none;
+      cursor: default;
+      border-color: $neutral-gray;
+    }
+  }
+
+  &__next-page {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $white;
+    border-radius: 50%;
+    background-color: inherit;
+
+    background-image: url('/src/images/icons/next-page-active.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+
+    @include on-desktop {
+      width: 48px;
+      height: 48px;
+    }
+
+
+    &:hover {
+      background-color: $neutral-gray;
+      border-color: $secondary;
+      cursor: pointer;
+    }
+
+    &--disabled {
+      background-image: url('/src/images/icons/next-page-disabled.svg');
+      border-color: $neutral-gray;
+      pointer-events: none;
+      cursor: default;
+    }
+  }
+
+  &__page {
+    color: $neutral-gray;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+
+    @include on-desktop {
+      padding: 10px 22px;
+    }
+
+    &--active {
+      color: $white;
+    }
+
+    &:hover {
+      color: $white;
+      text-decoration: underline;
+      text-decoration-color: $white;
+    }
+
+    @include on-desktop {
+      font-size: 24px;
+    }
+  }
+}

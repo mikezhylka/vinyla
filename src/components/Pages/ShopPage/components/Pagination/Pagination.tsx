@@ -1,0 +1,35 @@
+import { NavLink } from "react-router";
+import { products } from "../../../../../api/products";
+import { ArrowButton } from "../../../../blocks/ArrowButton/ArrowButton";
+import { productsPerPage } from "../../config";
+import { addPageLinkClassName } from "./handlers";
+import "./index.scss";
+
+type Props = {
+  page: number;
+};
+
+export const Pagination: React.FC<Props> = ({ page }) => {
+  const pages = Math.ceil(products.length / productsPerPage);
+  const pageArg = page;
+
+  return (
+    <div className="pagination">
+      <ArrowButton usedFor="pagination" type="prev" />
+
+      <div className="pagination__pages">
+        {Array.from({ length: pages }, (_, i) => i + 1).map((page) => (
+          <NavLink
+            key={page}
+            className={addPageLinkClassName(pageArg, page)}
+            to={`/shop/pages/${page}`}
+          >
+            {page}
+          </NavLink>
+        ))}
+      </div>
+
+      <ArrowButton usedFor="pagination" type="next" />
+    </div>
+  );
+};

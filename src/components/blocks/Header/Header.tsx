@@ -1,0 +1,94 @@
+import classNames from "classnames";
+import { useEffect, useState } from "react";
+import { NavLink, useLocation } from "react-router";
+import { useAppContext } from "../../../context/useAppContext";
+import { TOP_BAR_LINKS } from "./config";
+import "./header.scss";
+
+export const Header: React.FC = () => {
+  const { isProductPageOpened, setIsMenuShown, cartProducts } = useAppContext();
+  const [showBanner, setShowBanner] = useState(false);
+  const location = useLocation().pathname;
+
+  useEffect(() => {
+    return location === "/" ? setShowBanner(true) : setShowBanner(false);
+  }, [location]);
+
+  return (
+    <header
+      className="header"
+      style={{ height: showBanner ? "100vh" : "auto" }}
+    >
+      <div
+        className={classNames("header__top-bar", {
+          "header__top-bar--product-page": isProductPageOpened,
+        })}
+      >
+        <NavLink
+          className="header__brand-link"
+          to={"/"}
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        />
+        <div className="header__menu-cart-wrap">
+          <div className="header__menu header__menu-toggle">
+            {location === "/menu" ? (
+              <NavLink
+                className="header__menu-link header__menu-link--exit"
+                to="/"
+                onClick={() => setIsMenuShown(false)}
+              />
+            ) : (
+              <NavLink
+                className="header__menu-link header__menu-link--entry"
+                to="/menu"
+                onClick={() => setIsMenuShown(true)}
+              />
+            )}
+          </div>
+          <nav className="header__navigation">
+            <ul className="header__list">
+              {TOP_BAR_LINKS.map((item) => (
+                <li className="header__list-item" key={item.id}>
+                  <NavLink
+                    to={item.link}
+                    className={({ isActive }) => {
+                      return classNames("header__link", {
+                        "header__link--active": isActive,
+                      });
+                    }}
+                  >
+                    {item.title}
+                  </NavLink>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          <div className="header__cart">
+            <NavLink className="header__cart-link" to={"/cart"} />
+            <p className="header__cart-quantity">
+              {Object.entries(cartProducts)?.length}
+            </p>
+          </div>
+        </div>
+      </div>
+      {showBanner && (
+        <div className="header__hero">
+          <p className="header__hero-subtitle">Vinyla Corner</p>
+          <h1 className="header__hero-title">
+            Vinyla Corner: Where Music Spins <br />
+            It's <span className="header__hero-title-bold">Best Stories!</span>
+          </h1>
+          <p className="header__hero-tagline">
+            Dive into timeless melodies at our vinyl shop, where classic tunes
+            await
+          </p>
+          <button className="header__hero-button">
+            <NavLink to="/shop" className="header__hero-button__link">
+              Buy
+            </NavLink>
+          </button>
+        </div>
+      )}
+    </header>
+  );
+};

@@ -1,0 +1,61 @@
+@use '/src/styles/utils/mixins' as *;
+@use '/src/styles/utils/colors' as *;
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-block: 32px;
+
+  @include on-desktop {
+    margin-block: 48px 88px;
+  }
+
+  &__go-back {
+    width: 48px;
+    height: 48px;
+    border: 1px solid $white;
+    border-radius: 50%;
+    background-color: inherit;
+    margin-right: 8px;
+
+    background-image: url("/src/images/icons/previous-page-active.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    mix-blend-mode: difference;
+  }
+
+  &__home-icon {
+    transition: transform 0.4s;
+
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.1);
+      transition: transform 0.4s;
+    }
+  }
+
+  &__link {
+    font-size: 14px;
+    text-decoration: none;
+    color: $neutral-gray;
+    cursor: pointer;
+    
+    @include on-desktop {
+      font-size: 20px;
+      font-weight: 600;
+    }
+    
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &--disabled {
+      pointer-events: none;
+    }
+  }
+
+  &__path {
+    display: block;
+  }
+}

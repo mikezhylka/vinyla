@@ -13,13 +13,18 @@ import { StepTwoSection } from "./components/Steps/StepTwoSection";
 import styles from "./index.module.scss";
 
 export const CartPage: React.FC = () => {
-  const { cartProducts, cartQuantities, activeCartStep } = useAppContext();
+  const { cartProducts, cartQuantities, activeCartStep, purchasedProducts } =
+    useAppContext();
+
   const [shippingPrice, setShippingPrice] = useState(0);
   const [subtotal, setSubtotal] = useState(0);
   const [isPickUpChosen, setIsPickUpChosen] = useState(false);
   const [isPayingByCard, setIsPayingByCard] = useState(true);
+  const [isCartEmpty, setIsCartEmpty] = useState(false);
+
   const windowSize = useWindowSize();
-  const width = windowSize.width;
+  const width: number | null = windowSize.width;
+  const total: number = subtotal + shippingPrice;
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" });
@@ -33,10 +38,16 @@ export const CartPage: React.FC = () => {
 
     setSubtotal(calculateSubtotal);
   }, [cartProducts, cartQuantities]);
+  
+  useEffect(() => {
+    setIsCartEmpty(
+      !Object.keys(cartProducts).length &&
+        !Object.keys(purchasedProducts).length
+    );
+  }, [cartProducts, purchasedProducts]);
 
-  const total: number = subtotal + shippingPrice;
-
-  if (Object.entries(cartProducts).length === 0 && activeCartStep !== 3) {
+  
+  if (isCartEmpty) {
     return (
       <main className={styles.main}>
         <EmptyCart />
@@ -44,7 +55,7 @@ export const CartPage: React.FC = () => {
     );
   }
 
-  function showStepSection(): ReactElement | null {
+  function handleShowingStepSection(): ReactElement | null {
     switch (activeCartStep) {
       case 1:
         return (
@@ -81,7 +92,7 @@ export const CartPage: React.FC = () => {
   }
 
   const visibleCartSteps: CartStepType[] =
-    width && width < 640 ? cartSteps.slice(activeCartStep - 1) : cartSteps;
+    width && width < 640 ? cartSteps.slice(activeCartStep - 1) : cartSteps; // hide not active cart steps on mobile
 
   return (
     <main className={styles.main}>
@@ -91,7 +102,7 @@ export const CartPage: React.FC = () => {
           <CartStep key={currentStep.stepNumber} currentStep={currentStep} />
         ))}
       </div>
-      {showStepSection()}
+      {handleShowingStepSection()}
     </main>
   );
 };

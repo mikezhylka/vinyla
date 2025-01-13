@@ -59,21 +59,29 @@ export const ProductQuantity: React.FC<Props> = ({
     [product, onCartPage, setCartQuantities, setPageProductQty]
   );
 
+  const isDecrementDisabled = product?.quantity === 1 || pageProductQty === 1;
+
   return (
     <div className={styles["product__quantity-wrap"]}>
       <button
-        className={cn(styles["product__quantity-decrement"], {
-          [styles["product__quantity-decrement--disabled"]]:
-            pageProductQty === 1 || product?.quantity === 1,
-        })}
-        disabled={product?.quantity === 1 || pageProductQty === 1}
+        type="button"
+        className={cn(styles["product__quantity-decrement"])}
+        disabled={isDecrementDisabled}
         onClick={() => changeProductQuantity("decrement")}
       >
         -
       </button>
-      <span className={styles.product__quantity}>{displayedQuantity}</span>
+      <span
+        className={cn(styles["product__quantity"], {
+          [styles["product__quantity--inactive"]]:
+            isProductInCart && isDecrementDisabled,
+        })}
+      >
+        {displayedQuantity}
+      </span>
       <button
-        className={styles["product__quantity-increment"]}
+        type="button"
+        className={cn(styles["product__quantity-increment"])}
         onClick={() => changeProductQuantity("increment")}
         disabled={isProductInCart}
       >

@@ -19,12 +19,11 @@ export const RadioInput: React.FC<Props> = ({
   setShippingPrice,
   setIsPayingByCard,
   setIsPickUpChosen,
-  setFormState,
+  // setFormState,
 
 }) => {
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const value = e.target.value;
-
 
     if (setShippingPrice) {
       setShippingPrice(parseInt(value));
@@ -38,9 +37,9 @@ export const RadioInput: React.FC<Props> = ({
       setIsPickUpChosen(value === '-10')
     }
 
-    if (setFormState) {
-      setFormState(prev => ({ ...prev, [title]: e.target.value }))
-    }
+    // if (setFormState && title !== "Cash") {
+    //   setFormState(prev => ({ ...prev, [title]: e.target.value }))
+    // }
   }
 
   return (

@@ -1,11 +1,13 @@
 import { useWindowSize } from "@uidotdev/usehooks";
 import cn from "classnames";
-import { useLocation, useNavigate } from "react-router";
+import { NavLink, useLocation, useNavigate } from "react-router";
 import { desktopWidth } from "../../../config";
+import { useAppContext } from "../../../context/useAppContext";
 import { ArrowButton } from "../ArrowButton/ArrowButton";
 import styles from "./index.module.scss";
 
 export const Breadcrumbs: React.FC = () => {
+  const { breadcrumbsLinkRef } = useAppContext();
   const location = useLocation();
   const navigate = useNavigate();
   const windowSize = useWindowSize();
@@ -32,15 +34,16 @@ export const Breadcrumbs: React.FC = () => {
           const link = activePathSegments.slice(0, index + 1).join("/");
 
           return (
-            <a
+            <NavLink
               key={part}
               className={cn(styles.breadcrumbs__link, {
                 [styles["breadcrumbs__link--disabled"]]: part === "cart",
               })}
-              onClick={() => navigate(`../../${link}`)}
+              to={`../../${link}`}
+              ref={breadcrumbsLinkRef}
             >
               / <span className={styles["breadcrumbs__link-text"]}>{part}</span>{" "}
-            </a>
+            </NavLink>
           );
         })}
       </div>

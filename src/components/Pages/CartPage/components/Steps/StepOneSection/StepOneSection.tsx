@@ -34,12 +34,17 @@ export const StepOneSection: React.FC<Props> = ({
     }
   }, [width]);
 
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setActiveCartStep(2);
+  }
+
   return (
     <div className="step-1-wrap">
       <form
-        action=""
+        action="POST"
         className={styles["cart-form"]}
-        onSubmit={(e) => e.preventDefault()}
+        onSubmit={handleSubmit}
       >
         <ProductsTable />
         {!isOnDesktop && <CouponSection />}
@@ -88,12 +93,7 @@ export const StepOneSection: React.FC<Props> = ({
               </p>
             </div>
           </div>
-          <button
-            className={styles["cart-form__checkout"]}
-            onClick={() => {
-              setActiveCartStep((prev) => prev + 1);
-            }}
-          >
+          <button type="submit" className={styles["cart-form__checkout"]}>
             Checkout
           </button>
         </section>

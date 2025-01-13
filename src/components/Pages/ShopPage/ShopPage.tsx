@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import { useEffect, useState } from "react";
-import { NavLink, useNavigate, useParams } from "react-router";
+import { NavLink, useLocation, useNavigate, useParams } from "react-router";
 import { products } from "../../../api/products";
 import { Pagination } from "./components/Pagination";
 import { Products } from "./components/Products";
@@ -10,10 +10,14 @@ import "./index.scss";
 export const ShopPage: React.FC = () => {
   const { genre, page } = useParams();
   const [appliedGenre, setAppliedGenre] = useState("");
+  const location = useLocation();
+  const path = location.pathname;
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, [page]);
+    const behavior = path === "/shop" ? "instant" : "smooth";
+  
+    window.scrollTo({ top: 0, behavior });
+  }, [page, path]);
 
   const navigate = useNavigate();
   const normalizedPage = page ? +page : 1;

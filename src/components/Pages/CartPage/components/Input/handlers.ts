@@ -1,59 +1,41 @@
-import { countries } from "./config";
+// import { countries } from "./config";
 
-export function handleBlur(
-  e: React.ChangeEvent<HTMLInputElement>,
-  title: string,
-  type: string,
-  handleSettingError: (error: string) => void
-) {
-  const { value } = e.target;
-  const validNameExp: RegExp = /^[a-zA-Z]{2,50}(?: [a-zA-Z]{2,50})*$/;
-  const validLastNameExp: RegExp = /^[a-zA-Z]{2,50}$/;
-  const validPhoneNumberExp: RegExp = /[0-9\s()+-]/;
-  const validStreetAddressExp: RegExp = /^[a-zA-Z0-9\s.-]{5,100}$/;
-  const validCardNumberExp: RegExp = /^(?:\d{4} ?){4}$/;
-  const validCvvExp: RegExp = /^\d{3,4}$/;
-  const validExpirationDateExp: RegExp = /^(0[1-9]|1[0-2])\/\d{2}$/;
-  const validEmailExp: RegExp =
-    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+// export function handleBlur(
+//   e: React.ChangeEvent<HTMLInputElement>,
+//   title: string,
+//   type: string,
+//   handleSettingError: (error: string) => void
+// ) {
+//   const { value } = e.target;
 
-  if (value.length < 3) {
-    handleSettingError(`${title} must have at least 3 characters.`);
-  }
+//   // prettier-ignore
+//   const validations: { [key: string]: { regex: RegExp } } = {
+//     "First name": { regex: /^[a-zA-Z]{2,50}(?: [a-zA-Z]{2,50})*$/ },
+//     "Last name": { regex: /^[a-zA-Z]{2,50}$/ },
+//     "Street Address": { regex: /^[a-zA-Z0-9\s.-]{5,100}$/ },
+//     "tel": { regex: /[0-9\s()+-]/ },
+//     "email": { regex: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/ },
+//     "Card number": { regex: /^(?:\d{4} ?){4}$/ },
+//     "CVV": { regex: /^\d{3,4}$/ },
+//     "Expiration date": { regex: /^(0[1-9]|1[0-2])\/\d{2}$/ },
+//   };
 
-  if (title === "First name" && !validNameExp.test(value)) {
-    handleSettingError("Name must include only letters.");
-  }
+//   if (!value.length) {
+//     handleSettingError(`${title} must not be empty`);
+//     return;
+//   }
 
-  if (title === "Last name" && !validLastNameExp.test(value)) {
-    handleSettingError("Last name must include only letters.");
-  }
+//   if (validations[title] && !validations[title].regex.test(value)) {
+//     handleSettingError(`Please, type correct ${title}`);
+//     return;
+//   }
 
-  if (type === "tel" && !validPhoneNumberExp.test(value)) {
-    handleSettingError("Please, type correct phone number.");
-  }
+//   if (validations[type] && !validations[type].regex.test(value)) {
+//     handleSettingError(`Please, type correct ${type}`);
+//     return;
+//   }
 
-  if (type === "email" && !validEmailExp.test(value)) {
-    handleSettingError("Please, type correct email.");
-  }
-
-  if (title === "Country" && !countries.includes(value.toLowerCase())) {
-    handleSettingError("Please, type correct country.");
-  }
-
-  if (title === "Street Address" && !validStreetAddressExp.test(value)) {
-    handleSettingError("Please, type correct street number.");
-  }
-
-  if (title === "Card number" && !validCardNumberExp.test(value)) {
-    handleSettingError("Please, type correct card number.");
-  }
-
-  if (title === "CVV" && !validCvvExp.test(value)) {
-    handleSettingError("Please, type correct CVV.");
-  }
-
-  if (title === "Expiration date" && !validExpirationDateExp.test(value)) {
-    handleSettingError("Please, type correct Expiration date.");
-  }
-}
+//   if (title === "Country" && !countries.includes(value.toLowerCase())) {
+//     handleSettingError(`Please, type correct country.`);
+//   }
+// }

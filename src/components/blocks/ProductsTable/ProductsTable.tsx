@@ -1,7 +1,7 @@
 import { useWindowSize } from "@uidotdev/usehooks";
 import cn from "classnames";
 import { useAppContext } from "../../../context/useAppContext";
-import { CartProduct } from "../../Pages/CartPage/components/CartProduct/CartProduct";
+import { CartProduct } from "../../Pages/CartPage/components/CartProduct";
 import { addTableTitleClassName } from "../../Pages/CartPage/handlers";
 import styles from "./index.module.scss";
 

@@ -1,5 +1,6 @@
+// import { usePageLeave } from "@uidotdev/usehooks";
 import cn from "classnames";
-import { SetStateAction, useEffect } from "react";
+import { SetStateAction, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { useAppContext } from "../../../../../../context/useAppContext";
 import styles from "./index.module.scss";
@@ -16,20 +17,36 @@ export const StepThreeSection: React.FC<Props> = ({
   setShippingPrice,
   isPayingByCard,
 }) => {
-  const { purchasedProducts, setActiveCartStep } = useAppContext();
+  const {
+    setPurchasedProducts,
+    // activeCartStep,
+    purchasedProducts,
+    setActiveCartStep,
+  } = useAppContext();
   const navigate = useNavigate();
+  const [isInitialized, setIsInitialized] = useState(false);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" });
+    setIsInitialized(true);
 
     return () => {
-      setShippingPrice(0);
-      // setActiveCartStep(1);
-      // setPurchasedProducts({});
+      if (isInitialized) {
+        setActiveCartStep(1);
+        setPurchasedProducts({});
+        setShippingPrice(0);
+      }
     };
-  }, [setActiveCartStep, setShippingPrice]);
+  }, [
+    setActiveCartStep,
+    setPurchasedProducts,
+    setShippingPrice,
+    isInitialized,
+  ]);
 
-  const purchasedProductsSum: number = Object.values(purchasedProducts).reduce(
+  const purchasedProductsValues = Object.values(purchasedProducts);
+  const purchasedProductsLength: number = purchasedProductsValues.length;
+  const purchasedProductsSum: number = purchasedProductsValues.reduce(
     (acc, product) => {
       const { price, quantity } = product;
 
@@ -40,8 +57,6 @@ export const StepThreeSection: React.FC<Props> = ({
 
   const total: number = purchasedProductsSum + shippingPrice;
   const paymentMethod: string = isPayingByCard ? "Credit card" : "Cash";
-  const purchasedProductsLength: number =
-    Object.values(purchasedProducts).length;
 
   function countCurrentTime(): string {
     return new Date().toLocaleDateString("en-US", {
@@ -81,7 +96,7 @@ export const StepThreeSection: React.FC<Props> = ({
         Your order has been received
       </h1>
       <div className={styles["confirmation__products"]}>
-        {Object.values(purchasedProducts).map((product, index) => (
+        {purchasedProductsValues.map((product, index) => (
           <div
             className={cn(
               styles["confirmation__products-product"],
@@ -126,7 +141,12 @@ export const StepThreeSection: React.FC<Props> = ({
       </section>
       <button
         className={styles["confirmation__go-home"]}
-        onClick={() => navigate("/")}
+        onClick={() => {
+          navigate("/");
+          setShippingPrice(0);
+          setActiveCartStep(1);
+          setPurchasedProducts({});
+        }}
       >
         Go to home page
       </button>

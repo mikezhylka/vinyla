@@ -7,6 +7,7 @@ import { normalizePrice } from "../../../handlers";
 import { CartProduct } from "../../CartProduct/CartProduct";
 import { Input } from "../../Input";
 import { RadioInput } from "../../RadioInput/RadioInput";
+// import { LeavePageConfirmation } from "./components/LeavePageConfirmation";
 import { FormInitValues, FormValuesType } from "./config";
 import styles from "./index.module.scss";
 
@@ -28,6 +29,8 @@ export const StepTwoSection: React.FC<Props> = ({
   setIsPayingByCard,
 }) => {
   const {
+    // purchasedProducts,
+    // activeCartStep,
     cartProducts,
     setActiveCartStep,
     setCartProducts,
@@ -43,28 +46,19 @@ export const StepTwoSection: React.FC<Props> = ({
   const onTablet = width && width >= 640 && width < 1440;
 
   useEffect(() => {
-    const formStateArray = Object.values(formState);
+    const allInputsFilled: boolean = Object.values(formState).every(
+      (input) => !input.error.length && input.value.length
+    );
 
-    const isDisabled: boolean =
-      formStateArray.filter(
-        (input) => !input.error.length && input.value.length > 3
-      ) === formStateArray;
-
-    console.log(isDisabled);
-
-    setIsSubmitDisabled(!isDisabled);
+    setIsSubmitDisabled(!allInputsFilled);
   }, [formState]);
-
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "instant" });
-  }, []);
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setPurchasedProducts(cartProducts);
     setCartProducts({});
     setCartQuantities({});
-    setActiveCartStep((prev) => prev + 1);
+    setActiveCartStep(3);
   }
 
   return (
@@ -74,6 +68,7 @@ export const StepTwoSection: React.FC<Props> = ({
         className={styles.form}
         onSubmit={handleSubmit}
         noValidate
+        autoComplete="off"
       >
         <section
           className={cn(
@@ -89,7 +84,7 @@ export const StepTwoSection: React.FC<Props> = ({
           >
             Contact Information
           </h4>
-          {onDesktop ? ( // wrap inputs to have two of them in one line, otherwise not
+          {onDesktop ? ( // wrap inputs to have two of them in one line
             <div className={styles["form__section-inputs-wrap"]}>
               <Input
                 type="text"
@@ -231,6 +226,7 @@ export const StepTwoSection: React.FC<Props> = ({
                 type="number"
                 title="Card number"
                 autocomplete={"cc-number"}
+                readonly={true}
                 // formState={formState}
                 // setFormState={setFormState}
               />
@@ -239,6 +235,7 @@ export const StepTwoSection: React.FC<Props> = ({
                   type="text"
                   title="Expiration date"
                   autocomplete="cc-exp"
+                  readonly={true}
                   // formState={formState}
                   // setFormState={setFormState}
                 />
@@ -246,6 +243,7 @@ export const StepTwoSection: React.FC<Props> = ({
                   type="number"
                   title="CVV"
                   autocomplete="cc-csc"
+                  readonly={true}
                   // formState={formState}
                   // setFormState={setFormState}
                 />

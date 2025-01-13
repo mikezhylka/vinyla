@@ -6,8 +6,16 @@
   border-radius: 32px;
   color: $white;
   outline: none;
-  background-color: inherit;
+  background-color: #111;
   padding: 13px 16px;
+
+  &:read-only {
+    cursor: default;
+  }
+
+  &:-webkit-autofill {
+    background-color: #111;
+  }
 
   &--error {
     border-color: $red;

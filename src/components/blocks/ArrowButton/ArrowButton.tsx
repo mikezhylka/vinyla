@@ -7,7 +7,7 @@ import { useAppContext } from "../../../context/useAppContext";
 import { addPaginationBtnClass, addRecommendationsBtnClass } from "./handlers";
 
 // import styles from "../../Pages/ProductPage/index.module.scss";
-import breadcrumbsStyles from '../Breadcrumbs/index.module.scss';
+import breadcrumbsStyles from "../Breadcrumbs/index.module.scss";
 
 import { Product } from "../../../types/Product";
 import { UsedFor } from "../../../types/UsedFor";
@@ -23,10 +23,12 @@ export const ArrowButton: React.FC<Props> = ({
   type,
   recommendedProducts,
 }) => {
-  const { recommendedPage, setRecommendedPage } = useAppContext();
+  const { recommendedPage, setRecommendedPage, breadcrumbsLinkRef } =
+    useAppContext();
   const { page } = useParams();
   const navigate = useNavigate();
   let normalizedPage = null;
+  const linkHref = breadcrumbsLinkRef.current?.href;
 
   if (usedFor === "pagination") {
     normalizedPage = +(page as string) || 1;
@@ -86,7 +88,16 @@ export const ArrowButton: React.FC<Props> = ({
       case "recommendations":
         return handleSettingRecommendedPage();
       case "breadcrumb":
-        return navigate("../");
+        return (
+          linkHref &&
+          navigate(
+            `../${
+              linkHref.includes("cart")
+                ? ""
+                : linkHref.slice(linkHref.indexOf("#") + 1)
+            }`
+          )
+        );
     }
   }
 

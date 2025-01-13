@@ -1,15 +1,8 @@
-import React, { SetStateAction, useState } from "react";
-// import { products as PRODUCTS_API } from "../api/products";
-// import { CartProduct } from "../types/CartProduct";
+import React, { SetStateAction, useMemo, useRef, useState } from "react";
 import { CartProductAlias } from "../types/CartProductAlias";
 import { CartQuantities } from "../types/CartQuantities";
 import { Product } from "../types/Product";
 import { AppContext } from "./createdContext";
-
-// type ProductQuantity = {
-//   productId: number;
-//   quantity: number;
-// }
 
 export type AppContextProps = {
   error: boolean;
@@ -30,6 +23,7 @@ export type AppContextProps = {
   setCartQuantities: React.Dispatch<SetStateAction<CartQuantities>>;
   purchasedProducts: CartProductAlias;
   setPurchasedProducts: React.Dispatch<SetStateAction<CartProductAlias>>;
+  breadcrumbsLinkRef: React.RefObject<HTMLAnchorElement>;
 };
 
 export function AppProvider({ children }: { children: React.ReactNode }) {
@@ -41,31 +35,49 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
 
   const [recommendedPage, setRecommendedPage] = useState(1);
   const [favProducts, setFavProducts] = useState<Product[]>([]);
+
   const [cartQuantities, setCartQuantities] = useState<CartQuantities>({});
   const [purchasedProducts, setPurchasedProducts] = useState<CartProductAlias>({});
+  const breadcrumbsLinkRef = useRef<HTMLAnchorElement>(null);
+
+  const contextValue = useMemo(
+    () => ({
+      error,
+      setError,
+      isProductPageOpened,
+      setIsProductPageOpened,
+      isMenuShown,
+      setIsMenuShown,
+      cartProducts,
+      setCartProducts,
+      activeCartStep,
+      setActiveCartStep,
+      recommendedPage,
+      setRecommendedPage,
+      favProducts,
+      setFavProducts,
+      cartQuantities,
+      setCartQuantities,
+      purchasedProducts,
+      setPurchasedProducts,
+      breadcrumbsLinkRef,
+    }),
+    [
+      error,
+      isProductPageOpened,
+      isMenuShown,
+      cartProducts,
+      activeCartStep,
+      recommendedPage,
+      favProducts,
+      cartQuantities,
+      purchasedProducts,
+    ]
+  );
 
   return (
     <AppContext.Provider
-      value={{
-        error,
-        setError,
-        isProductPageOpened,
-        setIsProductPageOpened,
-        favProducts,
-        setFavProducts,
-        recommendedPage,
-        setRecommendedPage,
-        isMenuShown,
-        setIsMenuShown,
-        cartProducts,
-        setCartProducts,
-        activeCartStep,
-        setActiveCartStep,
-        cartQuantities,
-        setCartQuantities,
-        purchasedProducts,
-        setPurchasedProducts,
-      }}
+      value={contextValue}
     >
       {children}
     </AppContext.Provider>

@@ -78,5 +78,5 @@ export function addStarPicture(
     icon = "star-empty.svg";
   }
 
-  return `./images/icons/${icon}`;
+  return `/public/images/icons/${icon}`;
 }

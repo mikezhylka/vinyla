@@ -1,7 +1,7 @@
 import { useWindowSize } from "@uidotdev/usehooks";
 import cn from "classnames";
 import { useEffect, useState } from "react";
-import { useAppContext } from "../../../context/useAppContext";
+import { useProductContext } from "../../../contexts/Product/useProductContext";
 import { Comment } from "../../../types/Comment";
 import { Product } from "../../../types/Product";
 import { Stars } from "../Stars/Stars";
@@ -19,7 +19,7 @@ export const Feedback: React.FC<Props> = ({
   comment,
   currentProduct,
 }) => {
-  const { isProductPageOpened } = useAppContext();
+  const { isProductPageOpened } = useProductContext();
   const [isOnDesktop, setIsOnDesktop] = useState(false);
   const windowSize = useWindowSize();
   const { width } = windowSize;

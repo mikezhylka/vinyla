@@ -227,7 +227,6 @@
       transition: transform .4s;
   
       @include on-desktop {
-        // margin-left: 24px;
         width: 32px;
         height: 32px;
       }
@@ -252,11 +251,5 @@
       color: $white;
       background-color: #111;
     }
-
-    // &::after {
-    //   content: "";
-    //   text-decoration: none;
-    //   color: $white;
-    // }
   }
 }

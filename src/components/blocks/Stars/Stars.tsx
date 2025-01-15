@@ -4,7 +4,7 @@ import { Comment } from "../../../types/Comment";
 import { Product } from "../../../types/Product";
 import { addStarClassName, addStarPicture } from "./handlers";
 
-import styles from '../../Pages/ProductPage/index.module.scss';
+import styles from '../../Pages/Product/index.module.scss';
 
 type Props = {
   currentProduct?: Product;

@@ -1,18 +1,18 @@
 import classNames from "classnames";
 import { NavLink } from "react-router";
-import { useAppContext } from "../../../context/useAppContext";
-import { TOP_BAR_LINKS } from "../../blocks/Header/config";
+import { useProductContext } from "../../../contexts/Product/useProductContext";
+import { topBarLinks } from "../../blocks/Header/config";
 import "./index.scss";
 
 export const Menu: React.FC = () => {
-  const { setIsMenuShown } = useAppContext();
+  const { setIsMenuShown } = useProductContext();
 
   return (
     <main>
       <aside className="menu">
         <nav className="menu__navigation">
           <ul className="menu__list">
-            {TOP_BAR_LINKS.map((item) => (
+            {topBarLinks.map((item) => (
               <li className="menu__list-item" key={item.id}>
                 <NavLink
                   to={item.link}

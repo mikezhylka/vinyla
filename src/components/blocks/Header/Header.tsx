@@ -1,12 +1,15 @@
 import classNames from "classnames";
 import { useEffect, useState } from "react";
 import { NavLink, useLocation } from "react-router";
-import { useAppContext } from "../../../context/useAppContext";
-import { TOP_BAR_LINKS } from "./config";
+import { useCartContext } from "../../../contexts/Cart/useCartContext";
+import { useProductContext } from "../../../contexts/Product/useProductContext";
+import { topBarLinks } from "./config";
 import "./header.scss";
 
 export const Header: React.FC = () => {
-  const { isProductPageOpened, setIsMenuShown, cartProducts } = useAppContext();
+  const { setIsMenuShown } = useProductContext();
+  const { isProductPageOpened } = useProductContext();
+  const { cartProducts } = useCartContext();
   const [showBanner, setShowBanner] = useState(false);
   const location = useLocation().pathname;
 
@@ -47,7 +50,7 @@ export const Header: React.FC = () => {
           </div>
           <nav className="header__navigation">
             <ul className="header__list">
-              {TOP_BAR_LINKS.map((item) => (
+              {topBarLinks.map((item) => (
                 <li className="header__list-item" key={item.id}>
                   <NavLink
                     to={item.link}

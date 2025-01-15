@@ -4,7 +4,7 @@ type Link = {
   link: string;
 };
 
-export const TOP_BAR_LINKS: Link[] = [
+export const topBarLinks: Link[] = [
   { id: 1, title: "services", link: "/services" },
   { id: 2, title: "faq", link: "/faq" },
   { id: 3, title: "contact", link: "/contact" },

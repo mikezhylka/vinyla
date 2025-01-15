@@ -1,12 +1,12 @@
 import { useWindowSize } from "@uidotdev/usehooks";
 import cn from "classnames";
-import { useAppContext } from "../../../context/useAppContext";
-import { CartProduct } from "../../Pages/CartPage/components/CartProduct";
-import { addTableTitleClassName } from "../../Pages/CartPage/handlers";
+import { useCartContext } from "../../../contexts/Cart/useCartContext";
+import { CartProduct } from "../../pages/Cart/components/CartProduct";
+import { addTableTitleClassName } from "../../pages/Cart/handlers";
 import styles from "./index.module.scss";
 
 export const ProductsTable: React.FC = () => {
-  const { cartProducts, activeCartStep } = useAppContext();
+  const { cartProducts, activeCartStep } = useCartContext();
   const windowSize = useWindowSize();
   const { width } = windowSize;
   const onCheckout = activeCartStep === 2;

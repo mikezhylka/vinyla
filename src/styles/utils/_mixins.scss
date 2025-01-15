@@ -19,19 +19,6 @@
   }
 }
 
-@mixin on-desktop-xl {
-  @media (min-width: $desktop-xl-min-width) {
-    @content;
-  }
-}
-
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
-  &:hover {
-    #{$_property}: $_toValue;
-  }
-}
-
 @mixin mobile-grid {
   @media (max-width: $mobile-max-width) {
     display: grid;
@@ -77,7 +64,6 @@
 
   &:hover {
     background-color: $button-hover;
-    // color: #fff;
   }
 }
 

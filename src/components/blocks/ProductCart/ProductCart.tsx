@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-import { useAppContext } from "../../../context/useAppContext";
+import { useProductContext } from "../../../contexts/Product/useProductContext";
 import { Product as ProductType } from "../../../types/Product";
 import { Loader } from "../Loader/Loader";
 import { addProductCartClassName } from "./handlers";
@@ -14,7 +14,7 @@ type Props = {
 
 export const ProductCart: React.FC<Props> = ({ product, index, className }) => {
   const { id, title, photo, price } = product;
-  const { setRecommendedPage } = useAppContext();
+  const { setRecommendedPage } = useProductContext();
 
   const [isCartClicked, setIsCartClicked] = useState(false);
   const [showLoader, setShowLoader] = useState(true);

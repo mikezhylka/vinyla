@@ -1,14 +1,14 @@
 import { products } from "../../../api/products";
-import { productsPerPage } from "../../Pages/ShopPage/config";
+import { productsPerPage } from "../../pages/Shop/config";
 
 import { useNavigate, useParams } from "react-router";
-import { useAppContext } from "../../../context/useAppContext";
+import { useAppContext } from "../../../contexts/App/useAppContext";
 
 import { addPaginationBtnClass, addRecommendationsBtnClass } from "./handlers";
 
-// import styles from "../../Pages/ProductPage/index.module.scss";
 import breadcrumbsStyles from "../Breadcrumbs/index.module.scss";
 
+import { useProductContext } from "../../../contexts/Product/useProductContext";
 import { Product } from "../../../types/Product";
 import { UsedFor } from "../../../types/UsedFor";
 
@@ -23,8 +23,8 @@ export const ArrowButton: React.FC<Props> = ({
   type,
   recommendedProducts,
 }) => {
-  const { recommendedPage, setRecommendedPage, breadcrumbsLinkRef } =
-    useAppContext();
+  const { recommendedPage, setRecommendedPage } = useProductContext();
+  const { breadcrumbsLinkRef } = useAppContext();
   const { page } = useParams();
   const navigate = useNavigate();
   let normalizedPage = null;

@@ -1,27 +1,24 @@
 import cn from "classnames";
-import { SetStateAction, useCallback, useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { useLocation } from "react-router";
-import { useAppContext } from "../../../context/useAppContext";
+import { useCartContext } from "../../../contexts/Cart/useCartContext";
+import { useProductContext } from "../../../contexts/Product/useProductContext";
 import { CartProduct } from "../../../types/CartProduct";
 import styles from "./index.module.scss";
 
 type Props = {
   product?: CartProduct;
-  pageProductQty?: number;
-  setPageProductQty?: React.Dispatch<SetStateAction<number>>;
-  isProductInCart?: boolean;
 };
 
-export const ProductQuantity: React.FC<Props> = ({
-  product,
-  pageProductQty,
-  setPageProductQty,
-  isProductInCart,
-}) => {
-  const { cartQuantities, setCartQuantities } = useAppContext();
+export const ProductQuantity: React.FC<Props> = ({ product }) => {
+  const { cartQuantities, setCartQuantities, setCartProducts } =
+    useCartContext();
+  const { pageProductQty, setPageProductQty, isProductInCart } =
+    useProductContext();
   const location = useLocation();
   const onCartPage = location.pathname === "/cart";
 
+  // Initialize cart quantities if product is present
   useEffect(() => {
     if (product && !(product.id in cartQuantities)) {
       setCartQuantities((prev) => ({
@@ -31,35 +28,42 @@ export const ProductQuantity: React.FC<Props> = ({
     }
   }, [product, cartQuantities, setCartQuantities]);
 
-  const displayedQuantity =
-    onCartPage && product ? cartQuantities[product.id] : pageProductQty;
+  useEffect(() => {}, [cartQuantities]);
 
   const changeProductQuantity = useCallback(
     (operation: "increment" | "decrement") => {
-      return onCartPage && product
-        ? ((): void => {
-            setCartQuantities((prev) => ({
-              ...prev,
-              [product.id]:
-                operation === "decrement"
-                  ? product.quantity - 1
-                  : product.quantity + 1,
-            }));
+      if (onCartPage && product) {
+        setCartQuantities((prev) => ({
+          ...prev,
+          [product.id]:
+            operation === "decrement"
+              ? prev[product.id] - 1
+              : prev[product.id] + 1,
+        }));
 
-            if (operation === "decrement") {
-              product.quantity -= 1;
-            } else {
-              product.quantity += 1;
-            }
-          })()
-        : operation === "decrement"
-        ? setPageProductQty!((prev) => prev - 1)
-        : setPageProductQty!((prev) => prev + 1);
+        setCartProducts((prev) => ({
+          ...prev,
+          [product.id]: {
+            ...prev[product.id],
+            quantity:
+              operation === "decrement"
+                ? prev[product.id].quantity - 1
+                : prev[product.id].quantity + 1,
+          },
+        }));
+      } else {
+        setPageProductQty((prev) =>
+          operation === "decrement" ? prev - 1 : prev + 1
+        );
+      }
     },
-    [product, onCartPage, setCartQuantities, setPageProductQty]
+    [product, onCartPage, setCartQuantities, setPageProductQty, setCartProducts]
   );
 
-  const isDecrementDisabled = product?.quantity === 1 || pageProductQty === 1;
+  const displayedQuantity =
+    onCartPage && product ? cartQuantities[product.id] : pageProductQty;
+
+  const isDecrementDisabled = displayedQuantity === 1;
 
   return (
     <div className={styles["product__quantity-wrap"]}>
@@ -83,7 +87,6 @@ export const ProductQuantity: React.FC<Props> = ({
         type="button"
         className={cn(styles["product__quantity-increment"])}
         onClick={() => changeProductQuantity("increment")}
-        disabled={isProductInCart}
       >
         +
       </button>

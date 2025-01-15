@@ -1,6 +1,6 @@
 import cn from "classnames";
 import { Product } from "../../../types/Product";
-import styles from "../../Pages/ProductPage/index.module.scss";
+import styles from "../../Pages/Product/index.module.scss";
 
 export function addPaginationBtnClass(
   type: "prev" | "next",

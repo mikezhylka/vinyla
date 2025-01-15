@@ -1,10 +1,12 @@
-import { useAppContext } from "../../../context/useAppContext";
-import { FOOTER_DIRECT_CONTACTS, FOOTER_LINKS } from "./config";
+import { useAppContext } from "../../../contexts/App/useAppContext";
+import { useProductContext } from "../../../contexts/Product/useProductContext";
+import { footerDirectContacts, footerLinks } from "./config";
 import "./footer.scss";
 import { addFooterItemClassName } from "./handlers";
 
 export const Footer: React.FC = () => {
-  const { error, isMenuShown } = useAppContext();
+  const { error } = useAppContext();
+  const { isMenuShown } = useProductContext();
 
   return (
     !error &&
@@ -13,7 +15,7 @@ export const Footer: React.FC = () => {
         <nav className="footer__navigation">
           <ul className="footer__contacts-list">
             <div className="footer__contacts-list__direct-contacts">
-              {FOOTER_DIRECT_CONTACTS.map((contact) => {
+              {footerDirectContacts.map((contact) => {
                 const { title, link, href } = contact;
 
                 return (
@@ -38,7 +40,7 @@ export const Footer: React.FC = () => {
             </div>
 
             <div className="footer__contacts-list__sm">
-              {FOOTER_LINKS.map((link) => (
+              {footerLinks.map((link) => (
                 <li
                   key={link}
                   className={addFooterItemClassName(link)}

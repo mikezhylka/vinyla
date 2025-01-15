@@ -2,7 +2,7 @@ import classNames from "classnames";
 import { Comment } from "../../../types/Comment";
 import { Product } from "../../../types/Product";
 
-import styles from "../../Pages/ProductPage/index.module.scss";
+import styles from "../../Pages/Product/index.module.scss";
 
 type currObj = Product | Comment;
 

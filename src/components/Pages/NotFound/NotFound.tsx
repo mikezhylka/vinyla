@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { NavLink } from "react-router";
-import { useAppContext } from "../../../context/useAppContext";
+import { useAppContext } from "../../../contexts/App/useAppContext";
 import "./index.scss";
 
 export const NotFound: React.FC = () => {

@@ -1,5 +1,5 @@
 import cn from "classnames";
-import { useAppContext } from "../../../context/useAppContext";
+import { useCartContext } from "../../../contexts/Cart/useCartContext";
 import { CartStep as CartStepType } from "../../../types/CartStep";
 import "./index.scss";
 
@@ -8,7 +8,7 @@ type Props = {
 };
 
 export const CartStep: React.FC<Props> = ({ currentStep }) => {
-  const { activeCartStep } = useAppContext();
+  const { activeCartStep } = useCartContext();
   const { stepNumber, title } = currentStep;
   const isStepActive = stepNumber === activeCartStep;
   const isStepCompleted = activeCartStep > stepNumber;

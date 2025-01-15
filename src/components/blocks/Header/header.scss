@@ -85,7 +85,7 @@
       display: block;
       width: 112px;
       height: 30px;
-      background-image: url("/src/images/logos/vinyla.svg");
+      background-image: url("./images/logos/vinyla.svg");
       flex-shrink: 0;
     }
   }
@@ -103,11 +103,11 @@
       }
       
       &--entry {
-        background-image: url("/src/images/icons/burger-menu.svg");
+        background-image: url("./images/icons/burger-menu.svg");
       }
 
       &--exit {
-        background-image: url("/src/images/icons/cancel.svg");
+        background-image: url("./images/icons/cancel.svg");
       }
     }
 
@@ -131,7 +131,7 @@
 
     padding-inline: 16px;
 
-    background-image: url("/src/images/banners/hero-section-banner.png");
+    background-image: url("./images/banners/hero-section-banner.png");
     background-size: 100%;
     background-position: bottom;
     background-repeat: no-repeat;
@@ -220,7 +220,7 @@
       width: 24px;
       height: 24px;
   
-      background-image: url('/src/images/icons/cart.svg');
+      background-image: url('./images/icons/cart.svg');
       background-size: 100%;
       background-repeat: no-repeat;
       flex-shrink: 0;

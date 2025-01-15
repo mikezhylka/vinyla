@@ -68,7 +68,7 @@ export const CartProduct: React.FC<Props> = ({ product, usedFor }) => {
                 <ProductQuantity product={product} />
                 <img
                   className={styles["cart-table__delete-icon"]}
-                  src="/src/images/icons/trash.svg"
+                  src="./images/icons/trash.svg"
                   alt="Delete product"
                   onClick={handleProductDeletion}
                 />
@@ -103,7 +103,7 @@ export const CartProduct: React.FC<Props> = ({ product, usedFor }) => {
           <td className={styles["cart-table__delete"]}>
             <img
               className={styles["cart-table__delete-icon"]}
-              src="/src/images/icons/trash.svg"
+              src="./images/icons/trash.svg"
               alt="Delete product"
               onClick={handleProductDeletion}
             />
@@ -136,7 +136,7 @@ export const CartProduct: React.FC<Props> = ({ product, usedFor }) => {
           <div className={styles["product__delete"]}>
             <img
               className={styles["cart-table__delete-icon"]}
-              src="/src/images/icons/trash.svg"
+              src="./images/icons/trash.svg"
               alt="Delete product"
               onClick={handleProductDeletion}
             />

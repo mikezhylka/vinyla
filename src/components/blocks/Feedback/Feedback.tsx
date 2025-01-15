@@ -43,7 +43,7 @@ export const Feedback: React.FC<Props> = ({
     >
       <img
         className="feedback__user-logo--on-product-page"
-        src="/src/images/icons/user-white.svg"
+        src="./images/icons/user-white.svg"
         alt="User logo"
       />
       <div className="feedback__user--on-product-page">
@@ -62,7 +62,7 @@ export const Feedback: React.FC<Props> = ({
       <div className="feedback__user">
         <img
           className="feedback__user-logo"
-          src="/src/images/icons/user-white.svg"
+          src="./images/icons/user-white.svg"
           alt="User logo"
         />
         <p className="feedback__username">{feedback?.name}</p>

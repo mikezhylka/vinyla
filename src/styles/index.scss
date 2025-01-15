@@ -1,5 +1,5 @@
-@use './fonts';
+@use './fonts' as *;
 @use './utils/mixins' as *;
-@use './utils/vars';
-@use './utils/globals';
-@use './utils/colors';
+@use './utils/vars' as *;
+@use './utils/globals' as *;
+@use './utils/colors' as *;

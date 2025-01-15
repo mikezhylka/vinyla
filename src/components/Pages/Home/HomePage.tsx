@@ -18,7 +18,7 @@ export const HomePage: React.FC = () => {
           <h5 className="vinyla-corner__title">Vinyla Corner</h5>
           <img
             className="vinyla-corner__icon"
-            src="/src/images/icons/arrow-up-right.svg"
+            src="./images/icons/arrow-up-right.svg"
             alt="arrow-up"
           />
         </div>

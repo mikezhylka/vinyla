@@ -32,7 +32,7 @@ export const CouponSection: React.FC = () => {
         />
         <button className={styles["have-a-coupon__apply"]}>Apply</button>
         <img
-          src="/src/images/icons/mdi_coupon-outline.svg"
+          src="./images/icons/mdi_coupon-outline.svg"
           alt="Coupon"
           className={styles["have-a-coupon__icon"]}
         />

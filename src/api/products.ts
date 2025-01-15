@@ -61,7 +61,7 @@ export const products: Product[] = [
 
   {
     id: 2,
-    photo: "/src/images/products/various-winter-(ronco).png",
+    photo: "./images/products/various-winter-(ronco).png",
     title: "Various - Winter",
     author: "Various Artists",
     genre: "Christmas",
@@ -114,7 +114,7 @@ export const products: Product[] = [
 
   {
     id: 3,
-    photo: "/src/images/products/elvis-presley-inspirations.png",
+    photo: "./images/products/elvis-presley-inspirations.png",
     title: "Elvis Presley - Inspirations",
     author: "Elvis Presley",
     genre: "Popular",
@@ -167,7 +167,7 @@ export const products: Product[] = [
 
   {
     id: 4,
-    photo: "/src/images/products/the-pretenders-pretenders.png",
+    photo: "./images/products/the-pretenders-pretenders.png",
     title: "The Pretenders - Pretenders",
     author: "The Pretenders",
     genre: "Rock",
@@ -222,7 +222,7 @@ export const products: Product[] = [
 
   {
     id: 5,
-    photo: "/src/images/products/the-police-ghost-in-the-machine-blue.png",
+    photo: "./images/products/the-police-ghost-in-the-machine-blue.png",
     title: "The Police - Ghost in the Machine",
     author: "The Police",
     genre: "Rock",
@@ -275,7 +275,7 @@ export const products: Product[] = [
 
   {
     id: 6,
-    photo: "/src/images/products/james-last-golden-memories.png",
+    photo: "./images/products/james-last-golden-memories.png",
     title: "James Last - Golden Memories",
     author: "James Last",
     genre: "Classical",
@@ -335,7 +335,7 @@ export const products: Product[] = [
 
   {
     id: 7,
-    photo: "/src//images/products/happy-mondays-bummed.png",
+    photo: "./images/products/happy-mondays-bummed.png",
     title: "Happy Mondays - Bummed",
     author: "Happy Mondays",
     genre: "Rock",
@@ -394,7 +394,7 @@ export const products: Product[] = [
 
   {
     id: 8,
-    photo: "/src/images/products/the-diplomats-dipset-anthem.png",
+    photo: "./images/products/the-diplomats-dipset-anthem.png",
     title: "The Diplomats - Dipset Anthem",
     author: "The Diplomats",
     genre: "Popular",
@@ -453,7 +453,7 @@ export const products: Product[] = [
 
   {
     id: 9,
-    photo: "/src/images/products/kelis-trick-me.png",
+    photo: "./images/products/kelis-trick-me.png",
     title: "Kelis - Trick Me",
     author: "Kelis",
     genre: "Popular",
@@ -512,7 +512,7 @@ export const products: Product[] = [
 
   {
     id: 10,
-    photo: "/src/images/products/g-dep-child-of-the-ghetto.png",
+    photo: "./images/products/g-dep-child-of-the-ghetto.png",
     title: "G-Dep - Child Of The Ghetto",
     author: "G-Dep",
     genre: "Popular",
@@ -571,7 +571,7 @@ export const products: Product[] = [
 
   {
     id: 11,
-    photo: "/src/images/products/fat-joe-exclusive-box-set.png",
+    photo: "./images/products/fat-joe-exclusive-box-set.png",
     title: "Fat Joe - Exclusive Box Set",
     author: "Fat Joe",
     genre: "Popular",
@@ -630,7 +630,7 @@ export const products: Product[] = [
 
   {
     id: 12,
-    photo: "/src/images/products/fabolous-ghetto-fabolous.png",
+    photo: "./images/products/fabolous-ghetto-fabolous.png",
     title: "Fabolous - Ghetto Fabolous",
     author: "Fabolous",
     genre: "Popular",
@@ -689,7 +689,7 @@ export const products: Product[] = [
 
   {
     id: 13,
-    photo: "/src/images/products/tyrese-i-like-them-girls.png",
+    photo: "./images/products/tyrese-i-like-them-girls.png",
     title: "Tyrese - I Like Them Girls",
     author: "Tyrese",
     genre: "Popular",
@@ -748,7 +748,7 @@ export const products: Product[] = [
 
   {
     id: 14,
-    photo: "/src/images/products/scritti-politti-provision.png",
+    photo: "./images/products/scritti-politti-provision.png",
     title: "Scritti Politti - Provision",
     author: "Scritti Politti",
     genre: "Electronic",
@@ -807,7 +807,7 @@ export const products: Product[] = [
 
   {
     id: 15,
-    photo: "/src/images/products/the-police-ghost-in-the-machine-green.png",
+    photo: "./images/products/the-police-ghost-in-the-machine-green.png",
     title: "The Police - Ghost in the Machine",
     author: "The Police",
     genre: "Rock",
@@ -860,7 +860,7 @@ export const products: Product[] = [
 
   {
     id: 16,
-    photo: "/src/images/products/james-last-golden-memories.png",
+    photo: "./images/products/james-last-golden-memories.png",
     title: "James Last - Golden Memories",
     author: "James Last",
     genre: "Blues",
@@ -914,7 +914,7 @@ export const products: Product[] = [
 
   {
     id: 17,
-    photo: "/src/images/products/the-diplomats-dipset-anthem.png",
+    photo: "./images/products/the-diplomats-dipset-anthem.png",
     title: "The Diplomats - Dipset Anthem",
     author: "The Diplomats",
     genre: "Popular",
@@ -967,7 +967,7 @@ export const products: Product[] = [
 
   {
     id: 18,
-    photo: "/src/images/products/the-peddlers-three-for-all.png",
+    photo: "./images/products/the-peddlers-three-for-all.png",
     title: "The Peddlers - Three for All",
     author: "The Peddlers",
     genre: "Jazz",
@@ -1020,7 +1020,7 @@ export const products: Product[] = [
 
   {
     id: 19,
-    photo: "/src/images/products/imp-pills-and-soap-red.png",
+    photo: "./images/products/imp-pills-and-soap-red.png",
     title: "The Imposter - Pills and Soap",
     author: "The Imposter (Elvis Costello)",
     genre: "Rock",
@@ -1076,7 +1076,7 @@ export const products: Product[] = [
 
   {
     id: 20,
-    photo: "/src/images/products/elvis-presley-sun.png",
+    photo: "./images/products/elvis-presley-sun.png",
     title: "Elvis Presley - The Sun Sessions",
     author: "Elvis Presley",
     genre: "Rock",
@@ -1134,7 +1134,7 @@ export const products: Product[] = [
 
   {
     id: 21,
-    photo: "/src/images/products/xtc-looking-for-footprints.png",
+    photo: "./images/products/xtc-looking-for-footprints.png",
     title: "XTC - Looking for Footprints",
     author: "XTC",
     genre: "Metal",
@@ -1192,7 +1192,7 @@ export const products: Product[] = [
 
   {
     id: 22,
-    photo: "/src/images/products/as-i-lay-dying.png",
+    photo: "./images/products/as-i-lay-dying.png",
     title: "The Cure - Boys Don't Cry",
     author: "The Cure",
     genre: "Rock",
@@ -1250,7 +1250,7 @@ export const products: Product[] = [
   },
   {
     id: 23,
-    photo: "/src/images/products/alec-empire-suecide.png",
+    photo: "./images/products/alec-empire-suecide.png",
     title: "Alec Empire - Suecide",
     author: "Alec Empire",
     genre: "Electronic",
@@ -1308,7 +1308,7 @@ export const products: Product[] = [
   },
   {
     id: 24,
-    photo: "/src/images/products/elvis-presley-rca-victor.png",
+    photo: "./images/products/elvis-presley-rca-victor.png",
     title: "Elvis Presley - Elvis Presley",
     author: "Elvis Presley",
     genre: "Rock",
@@ -1366,7 +1366,7 @@ export const products: Product[] = [
   },
   {
     id: 25,
-    photo: "/src/images/products/rodeo-records-mocking-bird-yodel.png",
+    photo: "./images/products/rodeo-records-mocking-bird-yodel.png",
     title: "Slim Whitman - Mocking Bird Yodel",
     author: "Slim Whitman",
     genre: "Blues",
@@ -1424,7 +1424,7 @@ export const products: Product[] = [
   },
   {
     id: 26,
-    photo: "/src/images/products/the-slickers-frying-pan.png",
+    photo: "./images/products/the-slickers-frying-pan.png",
     title: "The Slickers - Frying Pan",
     author: "The Slickers",
     genre: "Popular",
@@ -1483,7 +1483,7 @@ export const products: Product[] = [
 
   {
     id: 27,
-    photo: "/src/images/products/trojan-records-louie-louie.png",
+    photo: "./images/products/trojan-records-louie-louie.png",
     title: "Trojan Records - Louie Louie",
     author: "Trojan Records Artists",
     genre: "Popular",
@@ -1541,7 +1541,7 @@ export const products: Product[] = [
   },
   {
     id: 28,
-    photo: "/src/images/products/nitrous-after-life-hardware.png",
+    photo: "./images/products/nitrous-after-life-hardware.png",
     title: "Nitrous - After Life",
     author: "Nitrous",
     genre: "Electronic",
@@ -1599,7 +1599,7 @@ export const products: Product[] = [
   },
   {
     id: 29,
-    photo: "/src/images/products/immediate-afterglow-of-your-love.png",
+    photo: "./images/products/immediate-afterglow-of-your-love.png",
     title: "Small Faces - Afterglow Of Your Love",
     author: "Small Faces",
     genre: "Rock",
@@ -1658,7 +1658,7 @@ export const products: Product[] = [
   {
     id: 30,
     photo:
-      "/src/images/products/ministers-of-dance-and-gsp-i-cant-wait-no-more.png",
+      "./images/products/ministers-of-dance-and-gsp-i-cant-wait-no-more.png",
     title: "Ministers Of Dance & GSP - I Can't Wait No More",
     author: "Ministers Of Dance & GSP",
     genre: "Electronic",
@@ -1713,7 +1713,7 @@ export const products: Product[] = [
   },
   {
     id: 31,
-    photo: "/src/images/products/tempo-joe-sullivan.png",
+    photo: "./images/products/tempo-joe-sullivan.png",
     title: "Joe Sullivan - Tempo",
     author: "Joe Sullivan",
     genre: "Jazz",
@@ -1769,7 +1769,7 @@ export const products: Product[] = [
   },
   {
     id: 32,
-    photo: "/src/images/products/tremont-oh-i-flo.png",
+    photo: "./images/products/tremont-oh-i-flo.png",
     title: "Tremont - Oh I Flo",
     author: "Tremont",
     genre: "Popular",
@@ -1823,7 +1823,7 @@ export const products: Product[] = [
 
   {
     id: 33,
-    photo: "/src/images/products/project-pablo-priorities.png",
+    photo: "./images/products/project-pablo-priorities.png",
     title: "Project Pablo - Priorities",
     author: "Project Pablo",
     genre: "Electronic",
@@ -1876,7 +1876,7 @@ export const products: Product[] = [
   },
   {
     id: 34,
-    photo: "/src/images/products/microphone-mathematics.png",
+    photo: "./images/products/microphone-mathematics.png",
     title: "Microphone Mathematics",
     author: "Quasimoto",
     genre: "Popular",
@@ -1928,7 +1928,7 @@ export const products: Product[] = [
   },
   {
     id: 35,
-    photo: "/src/images/products/poin-as08.png",
+    photo: "./images/products/poin-as08.png",
     title: "Poin - AS08",
     author: "Poin",
     genre: "Electronic",
@@ -1981,7 +1981,7 @@ export const products: Product[] = [
   },
   {
     id: 36,
-    photo: "/src/images/products/pegasus-a-third-of-a-lifetime.png",
+    photo: "./images/products/pegasus-a-third-of-a-lifetime.png",
     title: "Pegasus - A Third of a Lifetime",
     author: "Pegasus",
     genre: "Rock",
@@ -2033,7 +2033,7 @@ export const products: Product[] = [
   },
   {
     id: 37,
-    photo: "/src/images/products/romansoff-sportiv002.png",
+    photo: "./images/products/romansoff-sportiv002.png",
     title: "Romansoff - SPORTIV002",
     author: "Romansoff",
     genre: "Electronic",
@@ -2085,7 +2085,7 @@ export const products: Product[] = [
   },
   {
     id: 38,
-    photo: "/src/images/products/leo-anibaldi-armani.png",
+    photo: "./images/products/leo-anibaldi-armani.png",
     title: "Leo Anibaldi - Armani",
     author: "Leo Anibaldi",
     genre: "Popular",
@@ -2139,7 +2139,7 @@ export const products: Product[] = [
 
   {
     id: 39,
-    photo: "/src/images/products/cultivated-electronics-ltd.png",
+    photo: "./images/products/cultivated-electronics-ltd.png",
     title: "Various Artists - Cultivated Electronics LTD",
     author: "Various Artists",
     genre: "Electronic",
@@ -2193,7 +2193,7 @@ export const products: Product[] = [
 
   {
     id: 40,
-    photo: "/src/images/products/ludwig-a-f-roehrscheid.png",
+    photo: "./images/products/ludwig-a-f-roehrscheid.png",
     title: "Ludwig A.F. Roehrscheid - Echoes",
     author: "Ludwig A.F. Roehrscheid",
     genre: "Classical",
@@ -2250,7 +2250,7 @@ export const products: Product[] = [
 
   {
     id: 41,
-    photo: "/src/images/products/other-0752.png",
+    photo: "./images/products/other-0752.png",
     title: "Other - 0752",
     author: "Other",
     genre: "Popular",
@@ -2306,7 +2306,7 @@ export const products: Product[] = [
 
   {
     id: 42,
-    photo: "/src/images/products/supreems-us-together.png",
+    photo: "./images/products/supreems-us-together.png",
     title: "The Supreems - US Together",
     author: "The Supreems",
     genre: "Popular",
@@ -2362,7 +2362,7 @@ export const products: Product[] = [
 
   {
     id: 43,
-    photo: "/src/images/products/clubhouse-watanabe.png",
+    photo: "./images/products/clubhouse-watanabe.png",
     title: "Clubhouse - Watanabe",
     author: "Clubhouse",
     genre: "Jazz",
@@ -2416,7 +2416,7 @@ export const products: Product[] = [
 
   {
     id: 44,
-    photo: "/src/images/products/rogue-mind-fair.png",
+    photo: "./images/products/rogue-mind-fair.png",
     title: "Rogue Mind - Fair",
     author: "Rogue Mind",
     genre: "Rock",
@@ -2472,7 +2472,7 @@ export const products: Product[] = [
 
   {
     id: 45,
-    photo: "/src/images/products/easy-trax-bluejean.png",
+    photo: "./images/products/easy-trax-bluejean.png",
     title: "Easy Trax - Bluejean",
     author: "Easy Trax",
     genre: "Popular",
@@ -2527,7 +2527,7 @@ export const products: Product[] = [
   },
   {
     id: 46,
-    photo: "/src/images/products/jad-and-the-transorbital-express.png",
+    photo: "./images/products/jad-and-the-transorbital-express.png",
     title: "Jad and The Transorbital Express",
     author: "Jad and The Transorbital Express",
     genre: "Jazz",
@@ -2584,7 +2584,7 @@ export const products: Product[] = [
   },
   {
     id: 47,
-    photo: "/src/images/products/in-rotation.png",
+    photo: "./images/products/in-rotation.png",
     title: "In Rotation",
     author: "In Rotation",
     genre: "Electronic",
@@ -2639,7 +2639,7 @@ export const products: Product[] = [
   },
   {
     id: 48,
-    photo: "/src/images/products/sufficient-quantities-of-pure-air.png",
+    photo: "./images/products/sufficient-quantities-of-pure-air.png",
     title: "Sufficient Quantities of Pure Air",
     author: "Various Artists",
     genre: "Jazz",
@@ -2697,7 +2697,7 @@ export const products: Product[] = [
   },
   {
     id: 49,
-    photo: "/src/images/products/kicks-records-closer-to-my-heart.png",
+    photo: "./images/products/kicks-records-closer-to-my-heart.png",
     title: "Kicks Records - Closer To My Heart",
     author: "Kicks Records",
     genre: "Folk",
@@ -2755,7 +2755,7 @@ export const products: Product[] = [
 
   {
     id: 50,
-    photo: "/src/images/products/catch-records-2-bar-jazz.png",
+    photo: "./images/products/catch-records-2-bar-jazz.png",
     title: "Catch Records - 2 Bar Jazz",
     author: "Catch Records",
     genre: "Jazz",
@@ -2807,7 +2807,7 @@ export const products: Product[] = [
   
   {
     id: 51,
-    photo: "/src/images/products/vertigo-status-quo.png",
+    photo: "./images/products/vertigo-status-quo.png",
     title: "Vertigo - Status Quo",
     author: "Status Quo",
     genre: "Rock",
@@ -2858,7 +2858,7 @@ export const products: Product[] = [
   },
   {
     id: 52,
-    photo: "/src/images/products/nervous-dog-records.png",
+    photo: "./images/products/nervous-dog-records.png",
     title: "Nervous Dog Records",
     author: "Nervous Dog",
     genre: "Rock",
@@ -2909,7 +2909,7 @@ export const products: Product[] = [
   },
   {
     id: 53,
-    photo: "/src/images/products/hypersonic-ep.png",
+    photo: "./images/products/hypersonic-ep.png",
     title: "Hypersonic EP",
     author: "Hypersonic",
     genre: "Electronic",
@@ -2960,7 +2960,7 @@ export const products: Product[] = [
   },
   {
     id: 54,
-    photo: "/src/images/products/haus.png",
+    photo: "./images/products/haus.png",
     title: "Haus",
     author: "Haus",
     genre: "Popular",
@@ -3011,7 +3011,7 @@ export const products: Product[] = [
   },
   {
     id: 55,
-    photo: "/src/images/products/britney-spears-lcuky.png",
+    photo: "./images/products/britney-spears-lcuky.png",
     title: "Britney Spears - Lucky",
     author: "Britney Spears",
     genre: "Popular",
@@ -3063,7 +3063,7 @@ export const products: Product[] = [
   
   {
     id: 56,
-    photo: "/src/images/products/snkr012-etch.png",
+    photo: "./images/products/snkr012-etch.png",
     title: "SNKR012 - Etch",
     author: "SNKR012",
     genre: "Electronic",
@@ -3115,7 +3115,7 @@ export const products: Product[] = [
 
   {
     id: 57,
-    photo: "/src/images/products/regelbau-club-v-bee.png",
+    photo: "./images/products/regelbau-club-v-bee.png",
     title: "Regelbau - Club V Bee",
     author: "Regelbau",
     genre: "Electronic",
@@ -3167,7 +3167,7 @@ export const products: Product[] = [
 
   {
     id: 58,
-    photo: "/src/images/products/red-velvet-perfect-velvet.png",
+    photo: "./images/products/red-velvet-perfect-velvet.png",
     title: "Red Velvet - Perfect Velvet",
     author: "Red Velvet",
     genre: "Electronic",
@@ -3219,7 +3219,7 @@ export const products: Product[] = [
 
   {
     id: 59,
-    photo: "/src/images/products/original-clique-chill.png",
+    photo: "./images/products/original-clique-chill.png",
     title: "Original Clique - Chill",
     author: "Original Clique",
     genre: "Rock",
@@ -3271,7 +3271,7 @@ export const products: Product[] = [
 
   {
     id: 60,
-    photo: "/src/images/products/kaytranada.png",
+    photo: "./images/products/kaytranada.png",
     title: "Kaytranada - 99.9%",
     author: "Kaytranada",
     genre: "Electronic",
@@ -3323,7 +3323,7 @@ export const products: Product[] = [
   
   {
     id: 61,
-    photo: "/src/images/products/daft-punk-homework.png",
+    photo: "./images/products/daft-punk-homework.png",
     title: "Daft Punk - Homework",
     author: "Daft Punk",
     genre: "Electronic",
@@ -3374,7 +3374,7 @@ export const products: Product[] = [
   },
   {
     id: 62,
-    photo: "/src/images/products/bjoerk-possibly-maybe.png",
+    photo: "./images/products/bjoerk-possibly-maybe.png",
     title: "Björk - Possibly Maybe",
     author: "Björk",
     genre: "Metal",
@@ -3426,7 +3426,7 @@ export const products: Product[] = [
 
   {
     id: 63,
-    photo: "/src/images/products/chrysalis-parralel-lines.png",
+    photo: "./images/products/chrysalis-parralel-lines.png",
     title: "Chrysalis - Parallel Lines",
     author: "Chrysalis",
     genre: "Rock",
@@ -3478,7 +3478,7 @@ export const products: Product[] = [
 
   {
     id: 64,
-    photo: "/src/images/products/operahouse-record-if-i-could-only-make-you-care.png",
+    photo: "./images/products/operahouse-record-if-i-could-only-make-you-care.png",
     title: "Operahouse Records - If I Could Only Make You Care",
     author: "Operahouse",
     genre: "Rock",
@@ -3531,52 +3531,52 @@ export const products: Product[] = [
 
   // {
   //   id: 66,
-  //   photo: '/src/images/products/'
+  //   photo: './images/products/'
   // }
 
   // {
   //   id: 67,
-  //   photo: '/src/images/products/'
+  //   photo: './images/products/'
   // }
 
   // {
   //   id: 68,
-  //   photo: '/src/images/products/'
+  //   photo: './images/products/'
   // }
 
   // {
   //   id: 69,
-  //   photo: '/src/images/products/'
+  //   photo: './images/products/'
   // }
 
   // {
   //   id: 70,
-  //   photo: '/src/images/products/'
+  //   photo: './images/products/'
   // }
 
   // {
   //   id: 71,
-  //   photo: '/src/images/products/'
+  //   photo: './images/products/'
   // }
 
   // {
   //   id: 72,
-  //   photo: '/src/images/products/'
+  //   photo: './images/products/'
   // }
 
   // {
   //   id: 73,
-  //   photo: '/src/images/products/'
+  //   photo: './images/products/'
   // }
 
   // {
   //   id: 74,
-  //   photo: '/src/images/products/'
+  //   photo: './images/products/'
   // }
 
   // {
   //   id: 75,
-  //   photo: '/src/images/products/'
+  //   photo: './images/products/'
   // }
 ];
 

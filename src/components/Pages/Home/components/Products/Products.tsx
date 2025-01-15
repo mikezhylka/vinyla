@@ -1,4 +1,4 @@
-import { ProductCart } from "../../../../blocks/ProductCart/ProductCart";
+import { ProductCart } from "../../../../blocks/ProductCart";
 import { popularProducts } from "../../config";
 import "./products.scss";
 

@@ -25,7 +25,7 @@ export const Breadcrumbs: React.FC = () => {
       {notOnDesktop && <ArrowButton usedFor="breadcrumb" type="prev" />}
       <img
         className={styles["breadcrumbs__home-icon"]}
-        src="/src/images/icons/home.svg"
+        src="./images/icons/home.svg"
         alt="Home"
         onClick={() => navigate("/")}
       />

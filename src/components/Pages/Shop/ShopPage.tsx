@@ -40,7 +40,7 @@ export const ShopPage: React.FC = () => {
           <h5 className="genres__title">Genre</h5>
           <img
             className="genres__stripe"
-            src="/src/images/icons/stripe.svg"
+            src="./images/icons/stripe.svg"
             alt=""
           />
         </div>

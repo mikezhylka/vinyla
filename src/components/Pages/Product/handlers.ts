@@ -26,7 +26,7 @@ export function addFavIcon(product: Product, favProducts: Product[] | null) {
 
   const icon = isProductOnFavorites ? "heart-filled.svg" : "heart.svg";
 
-  return `/src/images/icons/${icon}`;
+  return `./images/icons/${icon}`;
 }
 
 export function calculateRecommendedProducts(currentProduct: Product) {

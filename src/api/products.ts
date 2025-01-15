@@ -3,7 +3,7 @@ import { Product } from "../types/Product";
 export const products: Product[] = [
   {
     id: 1,
-    photo: "/src/images/products/sky-cadmium.png",
+    photo: "./images/products/sky-cadmium.png",
     title: "Sky - Cadmium",
     author: "Sky",
     genre: "Rock",

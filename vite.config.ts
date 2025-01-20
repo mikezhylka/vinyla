@@ -9,10 +9,11 @@ export default defineConfig({
     preprocessorOptions: {
       scss: {
         additionalData: `
-        @use "/src/styles/utils/_mixins.scss" as *;
-        @use "/src/styles/utils/colors.scss" as *;
-        @use "/src/styles/utils/_globals.scss" as *;
+        @use "/src/styles/index.scss";
         @use "/src/styles/_fonts.scss" as *;
+        @use "/src/styles/utils/_colors.scss" as *;
+        @use "/src/styles/utils/_globals.scss" as *;
+        @use "/src/styles/utils/_mixins.scss" as *;
         @use "/src/styles/utils/_vars.scss" as *;
       `
       },

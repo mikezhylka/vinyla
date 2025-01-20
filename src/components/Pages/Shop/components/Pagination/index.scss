@@ -34,7 +34,7 @@
     border-radius: 50%;
     background-color: inherit;
     
-    background-image: url('./images/icons/previous-page-active.svg');
+    background-image: url('/public/images/icons/previous-page-active.svg');
     background-repeat: no-repeat;
     background-position: center;
   
@@ -49,7 +49,7 @@
     }
 
     &--disabled {
-      background-image: url('./images/icons/previous-page-disabled.svg');
+      background-image: url('/public/images/icons/previous-page-disabled.svg');
       pointer-events: none;
       cursor: default;
       border-color: $neutral-gray;
@@ -63,7 +63,7 @@
     border-radius: 50%;
     background-color: inherit;
 
-    background-image: url('./images/icons/next-page-active.svg');
+    background-image: url('/public/images/icons/next-page-active.svg');
     background-repeat: no-repeat;
     background-position: center;
 
@@ -80,7 +80,7 @@
     }
 
     &--disabled {
-      background-image: url('./images/icons/next-page-disabled.svg');
+      background-image: url('/public/images/icons/next-page-disabled.svg');
       border-color: $neutral-gray;
       pointer-events: none;
       cursor: default;

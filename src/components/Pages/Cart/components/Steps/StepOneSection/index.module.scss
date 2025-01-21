@@ -139,6 +139,7 @@
     margin-bottom: 72px;
     border: none;
     outline: none;
+    color: $body-background;
     background-color: $white;
     
     @include on-desktop {

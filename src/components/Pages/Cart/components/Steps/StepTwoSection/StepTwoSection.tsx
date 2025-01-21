@@ -36,8 +36,6 @@ export const StepTwoSection: React.FC<Props> = ({ total }) => {
   const onDesktop = width && width > 1440;
   const onTablet = width && width >= 640 && width < 1440;
 
-  useEffect(() => window.scrollTo({top: 0, behavior: "instant"}));
-
   useEffect(() => {
     const allInputsFilled: boolean = Object.values(confirmationFormState).every(
       (input) => !input.error.length && input.value.length

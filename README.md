@@ -55,4 +55,4 @@ The Figma design for this project is available at the following link:
 
 ---
 
-To copy this project in Docker, type docker pull mykhailozhylka/my-vinyla-shop:latest
+To copy this project in Docker, type docker pull mykhailozhylka/my-vinyla-shop:latest Undortunately, image in container do not load so please consider to use github clone / github pages

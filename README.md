@@ -52,3 +52,7 @@ The Figma design for this project is available at the following link:
 ---
 
 [Open Demo Page](https://mikezhylka.github.io/vinyla-shop/)
+
+---
+
+To copy this project in Docker, type docker pull nykhailozhylka/my-vinyla-shop:latest

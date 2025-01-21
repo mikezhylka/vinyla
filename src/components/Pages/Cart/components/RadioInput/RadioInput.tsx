@@ -13,10 +13,14 @@ export const RadioInput: React.FC<Props> = ({ title, pricing }) => {
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const value = e.target.value;
+    const isChoosingPaymentMethod = value === "Credit card" || value === "Cash";
 
-    setShippingPrice(parseInt(value));
-    setIsPayingByCard(value === "Credit card");
-    setIsPickUpChosen(value === "-10");
+    if (isChoosingPaymentMethod) {
+      setIsPayingByCard(value === "Credit card");
+    } else {
+      setIsPickUpChosen(value === "-10");
+      setShippingPrice(parseInt(value));
+    }
   }
 
   return (

@@ -104,12 +104,7 @@ export const StepThreeSection: React.FC = () => {
       </section>
       <button
         className={styles["confirmation__go-home"]}
-        onClick={() => {
-          navigate("/");
-          // setShippingPrice(0);
-          // setActiveCartStep(1);
-          // setPurchasedProducts({});
-        }}
+        onClick={() => navigate("/")}
       >
         Go to home page
       </button>

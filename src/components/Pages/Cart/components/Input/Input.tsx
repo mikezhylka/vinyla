@@ -99,9 +99,6 @@ export const Input: React.FC<Props> = ({ type, title, autocomplete }) => {
     }
   }
 
-  // credit card related information is banned with http
-  // const placeholder: string = readonly ? "we do not have https yet :(" : title;
-
   return (
     <div className={styles["input-wrap"]}>
       <label className={styles["input-title"]} htmlFor={title}>
@@ -113,7 +110,6 @@ export const Input: React.FC<Props> = ({ type, title, autocomplete }) => {
         id={title}
         placeholder={title}
         value={value}
-        // readOnly={readonly} // used for credit card related information
         onBlur={(e) => handleBlur(e)}
         onChange={handleChange}
         required

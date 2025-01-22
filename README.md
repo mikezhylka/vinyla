@@ -1,5 +1,3 @@
----
-
 # Vinyla Corner: Where Music Spins Its Best Stories! 🎶
 
 Welcome to **Vinyla Corner**, your online store for vinyl records! Explore our collection, add your favorite records to the cart, and enjoy the timeless charm of vinyl.

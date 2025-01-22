@@ -8,6 +8,7 @@ export const NotFound: React.FC = () => {
 
   useEffect(() => {
     setError(true);
+    window.scrollTo({top: 0, behavior: "instant"});
 
     return () => setError(false);
   }, [setError]);

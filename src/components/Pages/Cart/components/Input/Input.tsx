@@ -9,17 +9,12 @@ type Props = {
   type: string;
   title: string;
   autocomplete?: string;
-  readonly?: boolean;
 };
 
-export const Input: React.FC<Props> = ({
-  type,
-  title,
-  autocomplete,
-  readonly,
-}) => {
+export const Input: React.FC<Props> = ({ type, title, autocomplete }) => {
   const { confirmationFormState, setConfirmationFormState } = useCartContext();
   const [error, setError] = useState("");
+  const [wasSlashAdded, setWasSlashAdded] = useState(false);
 
   const err = Object.entries(confirmationFormState).find(
     (element) => element[0] === title && element[1].error
@@ -37,6 +32,7 @@ export const Input: React.FC<Props> = ({
 
   const value: string =
     confirmationFormState[title as keyof FormValuesType]?.value;
+
   function handleSettingError(error: string) {
     return setConfirmationFormState((prev) => ({
       ...prev,
@@ -48,6 +44,17 @@ export const Input: React.FC<Props> = ({
   }
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const inputValue = e.target.value.toString().trim();
+    const isTwoCharactersLong = inputValue.length === 2;
+    const isExpirationDateField = title === "Expiration date";
+  
+    if (isTwoCharactersLong && isExpirationDateField && !wasSlashAdded) {
+      e.target.value += "/";
+      setWasSlashAdded(true);
+    } else {
+      setWasSlashAdded(false);
+    }
+
     return setConfirmationFormState((prev) => ({
       ...prev,
       [title]: {
@@ -93,7 +100,7 @@ export const Input: React.FC<Props> = ({
   }
 
   // credit card related information is banned with http
-  const placeholder: string = readonly ? "we do not have https yet :(" : title;
+  // const placeholder: string = readonly ? "we do not have https yet :(" : title;
 
   return (
     <div className={styles["input-wrap"]}>
@@ -104,9 +111,9 @@ export const Input: React.FC<Props> = ({
         className={cn(styles["input"], { [styles["input--error"]]: error })}
         type={type}
         id={title}
-        placeholder={placeholder}
+        placeholder={title}
         value={value}
-        readOnly={readonly} // used for credit card related information
+        // readOnly={readonly} // used for credit card related information
         onBlur={(e) => handleBlur(e)}
         onChange={handleChange}
         required

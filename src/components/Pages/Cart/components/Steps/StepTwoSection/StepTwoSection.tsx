@@ -31,10 +31,18 @@ export const StepTwoSection: React.FC<Props> = ({ total }) => {
   } = useCartContext();
 
   const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
+  const [wasPageRendered, setWasPageRendered] = useState(false);
   const windowSize = useWindowSize();
   const width = windowSize.width;
   const onDesktop = width && width > 1440;
   const onTablet = width && width >= 640 && width < 1440;
+
+  useEffect(() => {
+    if (!wasPageRendered) {
+      window.scrollTo({ top: 0, behavior: "instant" });
+    }
+    setWasPageRendered(true);
+  }, [wasPageRendered]);
 
   useEffect(() => {
     const allInputsFilled: boolean = Object.values(confirmationFormState).every(
@@ -145,22 +153,15 @@ export const StepTwoSection: React.FC<Props> = ({ total }) => {
               <Input
                 type="number"
                 title="Card number"
-                autocomplete={"cc-number"}
-                readonly={true}
+                autocomplete="cc-number"
               />
               <div className={styles["form__section-inputs-wrap"]}>
                 <Input
                   type="text"
                   title="Expiration date"
                   autocomplete="cc-exp"
-                  readonly={true}
                 />
-                <Input
-                  type="number"
-                  title="CVV"
-                  autocomplete="cc-csc"
-                  readonly={true}
-                />
+                <Input type="number" title="CVV" autocomplete="cc-csc" />
               </div>
             </>
           )}

@@ -15,8 +15,7 @@ Welcome to **Vinyla Corner**, your online store for vinyl records! Explore our c
 
 ### **Shop Page**
 - **Filter Vinyl Records by Genre**: Browse through an extensive collection of vinyl by selecting specific genres (e.g., Rock, Jazz, Popular, Classical, etc.) to find your favorites with ease.
-- **Product Cards**:
-  - Displays essential information like album name, price, and a photo of the vinyl record.
+- **Product Cards**: Displays essential information like album name, price, and a photo of the vinyl record.
 
 ---
 
@@ -27,8 +26,7 @@ Welcome to **Vinyla Corner**, your online store for vinyl records! Explore our c
 - **Add to Cart & Favorites**:
   - Add the product to your **Favorites** for later consideration.
   - Adjust the **Quantity** directly on the product page before adding to your **Cart**.
-- **Comments Section**:
-  - Read reviews from other music lovers.
+- **Comments Section**: Read reviews from other music lovers.
 
 ---
 

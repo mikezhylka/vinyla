@@ -34,6 +34,7 @@ import { Product } from "../../../types/Product";
 import { productCharsBarTitles } from "./config";
 
 // Styles
+import { useScroll } from "../../../hooks/useScroll";
 import styles from "./index.module.scss";
 
 
@@ -58,8 +59,9 @@ export const ProductPage: React.FC = () => {
   const windowSize = useWindowSize();
   const { width } = windowSize;
 
+  useScroll({ top: 0, behavior: "instant" })
+
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "instant" });
     setIsProductPageOpened(true);
 
     return () => setIsProductPageOpened(false);

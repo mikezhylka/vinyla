@@ -2,6 +2,7 @@ import { useWindowSize } from "@uidotdev/usehooks";
 import cn from "classnames";
 import { useEffect, useState } from "react";
 import { useCartContext } from "../../../../../../contexts/Cart/useCartContext";
+import { useScroll } from "../../../../../../hooks/useScroll";
 import { ProductsTable } from "../../../../../blocks/ProductsTable/ProductsTable";
 import { normalizePrice } from "../../../handlers";
 import { CartProduct } from "../../CartProduct/CartProduct";
@@ -31,18 +32,11 @@ export const StepTwoSection: React.FC<Props> = ({ total }) => {
   } = useCartContext();
 
   const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
-  const [wasPageRendered, setWasPageRendered] = useState(false);
-  const windowSize = useWindowSize();
-  const width = windowSize.width;
+  const { width } = useWindowSize();
   const onDesktop = width && width > 1440;
-  const onTablet = width && width >= 640 && width < 1440;
+  const onTablet = width && width >= 640 && !onDesktop;
 
-  useEffect(() => {
-    if (!wasPageRendered) {
-      window.scrollTo({ top: 0, behavior: "instant" });
-    }
-    setWasPageRendered(true);
-  }, [wasPageRendered]);
+  useScroll({top: 0, behavior: "instant"});
 
   useEffect(() => {
     const allInputsFilled: boolean = Object.values(confirmationFormState).every(

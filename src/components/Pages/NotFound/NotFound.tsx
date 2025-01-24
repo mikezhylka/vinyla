@@ -1,14 +1,16 @@
 import { useEffect } from "react";
 import { NavLink } from "react-router";
 import { useAppContext } from "../../../contexts/App/useAppContext";
+import { useScroll } from "../../../hooks/useScroll";
 import "./index.scss";
 
 export const NotFound: React.FC = () => {
   const { setError } = useAppContext();
 
+  useScroll({top: 0, behavior: "instant"});
+
   useEffect(() => {
     setError(true);
-    window.scrollTo({top: 0, behavior: "instant"});
 
     return () => setError(false);
   }, [setError]);

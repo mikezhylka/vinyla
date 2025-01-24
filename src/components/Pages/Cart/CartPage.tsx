@@ -10,8 +10,8 @@ import { StepOneSection } from "./components/Steps/StepOneSection";
 import { StepThreeSection } from "./components/Steps/StepThreeSection";
 import { StepTwoSection } from "./components/Steps/StepTwoSection";
 
-import { CartStep as CartStepType } from "../../../types/CartStep";
-
+import { useScroll } from "../../../hooks/useScroll";
+import { calculateVisibleCartSteps } from "./handlers";
 import styles from "./index.module.scss";
 
 export const CartPage: React.FC = () => {
@@ -30,18 +30,18 @@ export const CartPage: React.FC = () => {
   } = useCartContext();
 
   const windowSize = useWindowSize();
-  const width: number | null = windowSize.width;
+  const { width } = windowSize;
   const total: number = subtotal + shippingPrice;
 
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "instant" });
+  useScroll({ top: 0, behavior: "smooth" });
 
+  useEffect(() => {
     return () => {
       if (!isFormSubmited) {
         setActiveCartStep(1);
       }
     };
-    // rule below is used because adding isFormDisabled in dependency array adds redundant rerenders and breaks code
+    // adding isFormSubmitted
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [setActiveCartStep]);
 
@@ -82,9 +82,11 @@ export const CartPage: React.FC = () => {
     }
   }
 
-  // hide not active cart steps on mobile
-  const visibleCartSteps: CartStepType[] =
-    width && width < 640 ? cartSteps.slice(activeCartStep - 1) : cartSteps;
+  const visibleCartSteps = calculateVisibleCartSteps(
+    width,
+    cartSteps,
+    activeCartStep
+  );
 
   return (
     <main className={styles.main}>

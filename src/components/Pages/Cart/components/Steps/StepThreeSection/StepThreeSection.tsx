@@ -2,6 +2,7 @@ import cn from "classnames";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { useCartContext } from "../../../../../../contexts/Cart/useCartContext";
+import { useScroll } from "../../../../../../hooks/useScroll";
 import { createOrderData } from "./config";
 import styles from "./index.module.scss";
 import { OrderData } from "./types";
@@ -18,8 +19,9 @@ export const StepThreeSection: React.FC = () => {
   const navigate = useNavigate();
   const [isInitialized, setIsInitialized] = useState(false);
 
+  useScroll({ top: 0, behavior: "instant" });
+
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "instant" });
     setIsInitialized(true);
 
     return () => {

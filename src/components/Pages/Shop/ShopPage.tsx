@@ -1,7 +1,8 @@
 import classNames from "classnames";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { NavLink, useLocation, useNavigate, useParams } from "react-router";
 import { products } from "../../../api/products";
+import { useScroll } from "../../../hooks/useScroll";
 import { Pagination } from "./components/Pagination";
 import { Products } from "./components/Products";
 import { genresList, productsPerPage } from "./config";
@@ -12,13 +13,10 @@ export const ShopPage: React.FC = () => {
   const [appliedGenre, setAppliedGenre] = useState("");
   const location = useLocation();
   const path = location.pathname;
+  const behavior = path === "/shop" ? "instant" : "smooth";
 
-  useEffect(() => {
-    const behavior = path === "/shop" ? "instant" : "smooth";
+  useScroll({ top: 0, behavior });
   
-    window.scrollTo({ top: 0, behavior });
-  }, [page, path]);
-
   const navigate = useNavigate();
   const normalizedPage = page ? +page : 1;
 

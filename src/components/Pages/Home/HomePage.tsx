@@ -1,5 +1,5 @@
-import { useEffect } from "react";
 import { Link, useNavigate } from "react-router";
+import { useScroll } from "../../../hooks/useScroll";
 import { Feedbacks } from "./components/Feedbacks";
 import { Products } from "./components/Products";
 import "./index.scss";
@@ -7,9 +7,7 @@ import "./index.scss";
 export const HomePage: React.FC = () => {
   const navigate = useNavigate();
 
-  useEffect(() => {
-    window.scrollTo({top: 0, behavior: "instant"});
-  }, []);
+  useScroll({top: 0, behavior: "instant"});
 
   return (
     <main className="main">

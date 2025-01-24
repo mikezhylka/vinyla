@@ -6,14 +6,29 @@ Welcome to **Vinyla Corner**, your online store for vinyl records! Explore our c
 
 ## 🛒 Features
 
-### **Shop Section**
-- Navigate to the shop section using:
-  - **BUY** buttons on the Home page.
-  - **BUY IN ONE CLICK** in the top bar/menu.
-- Visit product pages to:
-  - Add items to your **Favorites**.
-  - Adjust the **Quantity**.
-  - Add items to the **Cart**.
+### **Home Page**
+- **Hero Banner**: A visually striking banner highlighting featured vinyl records or promotions to capture users' attention as they land on the site.
+- **Popular Products Section**: A curated display of the most sought-after vinyl records, making it easy for users to discover trending music.
+- **Feedbacks Section**: A dedicated section where users can read testimonials from other customers.
+
+---
+
+### **Shop Page**
+- **Filter Vinyl Records by Genre**: Browse through an extensive collection of vinyl by selecting specific genres (e.g., Rock, Jazz, Popular, Classical, etc.) to find your favorites with ease.
+- **Product Cards**: Displays essential information like album name, price, and a photo of the vinyl record.
+
+---
+
+### **Product Page**
+- **Detailed Product Information**:
+  - View album details such as average rate, description, label, barcode, number of media and genre / genres.
+  - Check out high-resolution images of the album cover and packaging.
+- **Add to Cart & Favorites**:
+  - Add the product to your **Favorites** for later consideration.
+  - Adjust the **Quantity** directly on the product page before adding to your **Cart**.
+- **Comments Section**: Read reviews from other music lovers.
+
+---
 
 ### **Cart Section**
 - Modify your selected items:
@@ -23,6 +38,8 @@ Welcome to **Vinyla Corner**, your online store for vinyl records! Explore our c
   - Ensure all inputs are correct (validation is applied).
   - Fill the form **in English**.
   - Provide an existing **Country** in the respective input field.
+
+---
 
 ### **Checkout Process**
 The checkout consists of **3 steps**:
@@ -35,23 +52,28 @@ The checkout consists of **3 steps**:
 ## 🛠️ Development Details
 
 ### **Technologies Used**
-- **Frontend Framework**: React with TypeScript
+- **Frontend Framework**: React
+- **Programming Language**: TypeScript
 - **Navigation**: React Router
 - **Styling**: SASS with BEM methodology
+- **Configuration**: Vite
 
 ### **Future Enhancements**
 - Adding new sections.
-- Implementing a comments feature.
+- Implementing a comments feature (currently planned for the **Product Page**).
+- Adding Redux to the project.
 
 ---
 
 ## 🎨 Design
-The Figma design for this project is available at the following link:
+The Figma design for this project is available at the following link:  
 [View Design in Figma](https://www.figma.com/design/nBrWSDW3mf1sgOlWxod1ZQ/Design?node-id=0-1&t=Ukwq32gBlFLcQj0N-1)
 
 ---
 
-[Open Demo Page](https://mikezhylka.github.io/vinyla-shop/)
+[Open Demo Page](https://mikezhylka.github.io/vinyla-shop/)  
+
+---
 
 ---
 

@@ -1,4 +1,4 @@
-import { infiniteScrollDuration } from "../../../config";
+import { infiniteScrollDuration } from "../../../constants/breakpoints";
 import { Comment } from "../../../types/Comment";
 
 export function addFeedbackDescription(

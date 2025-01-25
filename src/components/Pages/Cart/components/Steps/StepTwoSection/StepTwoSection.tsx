@@ -1,7 +1,10 @@
 import { useWindowSize } from "@uidotdev/usehooks";
 import cn from "classnames";
 import { useEffect, useState } from "react";
-import { desktopWidth, tabletWidth } from "../../../../../../config";
+import {
+  desktopWidth,
+  tabletWidth,
+} from "../../../../../../constants/breakpoints";
 import { useCartContext } from "../../../../../../contexts/Cart/useCartContext";
 import { useScroll } from "../../../../../../hooks/useScroll";
 import { ProductsTable } from "../../../../../blocks/ProductsTable/ProductsTable";
@@ -37,7 +40,7 @@ export const StepTwoSection: React.FC<Props> = ({ total }) => {
   const onDesktop = width && width >= desktopWidth;
   const onTablet = width && width >= tabletWidth && !onDesktop;
 
-  useScroll({options: {top: 0, behavior: "instant"}});
+  useScroll({ options: { top: 0, behavior: "instant" } });
 
   useEffect(() => {
     const allInputsFilled: boolean = Object.values(confirmationFormState).every(

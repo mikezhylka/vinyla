@@ -1,7 +1,7 @@
 import { useWindowSize } from "@uidotdev/usehooks";
 import cn from "classnames";
 import { NavLink, useLocation, useNavigate } from "react-router";
-import { desktopWidth } from "../../../config";
+import { desktopWidth } from "../../../constants/breakpoints";
 import { useAppContext } from "../../../contexts/App/useAppContext";
 import { ArrowButton } from "../ArrowButton";
 import styles from "./index.module.scss";

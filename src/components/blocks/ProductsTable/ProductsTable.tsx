@@ -1,6 +1,6 @@
 import { useWindowSize } from "@uidotdev/usehooks";
 import cn from "classnames";
-import { tabletWidth } from "../../../config";
+import { tabletWidth } from "../../../constants/breakpoints";
 import { useCartContext } from "../../../contexts/Cart/useCartContext";
 import { CartProduct } from "../../pages/Cart/components/CartProduct";
 import { addTableTitleClassName } from "../../pages/Cart/handlers";

@@ -34,7 +34,7 @@ import { Product } from "../../../types/Product";
 import { productCharsBarTitles } from "./config";
 
 // Styles
-import { desktopWidth, tabletWidth } from "../../../config";
+import { desktopWidth, tabletWidth } from "../../../constants/breakpoints";
 import { useScroll } from "../../../hooks/useScroll";
 import styles from "./index.module.scss";
 

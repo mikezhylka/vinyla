@@ -1,7 +1,7 @@
 import { useWindowSize } from "@uidotdev/usehooks";
 import cn from "classnames";
 import { useNavigate } from "react-router";
-import { tabletWidth } from "../../../../../config";
+import { tabletWidth } from "../../../../../constants/breakpoints";
 import { useCartContext } from "../../../../../contexts/Cart/useCartContext";
 import { CartProduct as CartProductType } from "../../../../../types/CartProduct";
 import { ProductQuantity } from "../../../../blocks/ProductQuantity";

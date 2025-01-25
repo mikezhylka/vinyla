@@ -1,5 +1,5 @@
 import cn from "classnames";
-import { tabletWidth } from "../../../config";
+import { tabletWidth } from "../../../constants/breakpoints";
 import { CartStep } from "../../../types/CartStep";
 import styles from "./index.module.scss";
 

@@ -1,7 +1,7 @@
 import { useWindowSize } from "@uidotdev/usehooks";
 import cn from "classnames";
 import { useEffect, useState } from "react";
-import { desktopWidth } from "../../../config";
+import { desktopWidth } from "../../../constants/breakpoints";
 import { useProductContext } from "../../../contexts/Product/useProductContext";
 import { Comment } from "../../../types/Comment";
 import { Product } from "../../../types/Product";

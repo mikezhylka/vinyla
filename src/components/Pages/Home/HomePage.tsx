@@ -2,12 +2,13 @@ import { Link, useNavigate } from "react-router";
 import { useScroll } from "../../../hooks/useScroll";
 import { Feedbacks } from "./components/Feedbacks";
 import { Products } from "./components/Products";
+
 import "./index.scss";
 
 export const HomePage: React.FC = () => {
   const navigate = useNavigate();
 
-  useScroll({options: {top: 0, behavior: "instant"}});
+  useScroll({ options: { top: 0, behavior: "instant" } });
 
   return (
     <main className="main">

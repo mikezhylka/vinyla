@@ -8,7 +8,7 @@ import { CouponSection } from "./components/CouponSection";
 import { useWindowSize } from "@uidotdev/usehooks";
 import { useCartContext } from "../../../../../../contexts/Cart/useCartContext";
 
-import { desktopWidth } from "../../../../../../config";
+import { desktopWidth } from "../../../../../../constants/breakpoints";
 import styles from "./index.module.scss";
 
 type Props = {

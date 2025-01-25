@@ -17,8 +17,7 @@ type Props = {
 export const StepOneSection: React.FC<Props> = ({ total }) => {
   const { subtotal, shippingPrice, setActiveCartStep } = useCartContext();
   const [isOnDesktop, setIsOnDesktop] = useState(false);
-  const windowSize = useWindowSize();
-  const { width } = windowSize;
+  const { width } = useWindowSize();
 
   useEffect(() => {
     if (width) {

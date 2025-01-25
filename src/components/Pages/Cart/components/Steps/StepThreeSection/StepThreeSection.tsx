@@ -16,10 +16,10 @@ export const StepThreeSection: React.FC = () => {
     setShippingPrice,
     isPayingByCard,
   } = useCartContext();
-  const navigate = useNavigate();
   const [isInitialized, setIsInitialized] = useState(false);
+  const navigate = useNavigate();
 
-  useScroll({ top: 0, behavior: "instant" });
+  useScroll({ options: { top: 0, behavior: "instant" } });
 
   useEffect(() => {
     setIsInitialized(true);

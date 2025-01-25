@@ -56,10 +56,9 @@ export const ProductPage: React.FC = () => {
 
   const [isOnDesktop, setIsOnDesktop] = useState(false);
   const { productId } = useParams();
-  const windowSize = useWindowSize();
-  const { width } = windowSize;
+  const { width } = useWindowSize();
 
-  useScroll({ top: 0, behavior: "instant" })
+  useScroll({options: {top: 0, behavior: "instant"}})
 
   useEffect(() => {
     setIsProductPageOpened(true);

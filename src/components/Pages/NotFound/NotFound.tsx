@@ -7,7 +7,7 @@ import "./index.scss";
 export const NotFound: React.FC = () => {
   const { setError } = useAppContext();
 
-  useScroll({top: 0, behavior: "instant"});
+  useScroll({options: {top: 0, behavior: "instant"}});
 
   useEffect(() => {
     setError(true);

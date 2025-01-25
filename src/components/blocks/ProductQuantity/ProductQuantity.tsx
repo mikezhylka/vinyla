@@ -15,8 +15,8 @@ export const ProductQuantity: React.FC<Props> = ({ product }) => {
     useCartContext();
   const { pageProductQty, setPageProductQty, isProductInCart } =
     useProductContext();
-  const location = useLocation();
-  const onCartPage = location.pathname === "/cart";
+  const { pathname } = useLocation();
+  const onCartPage = pathname === "/cart";
 
   // Initialize cart quantities if product is present
   useEffect(() => {

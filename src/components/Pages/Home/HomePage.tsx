@@ -7,7 +7,7 @@ import "./index.scss";
 export const HomePage: React.FC = () => {
   const navigate = useNavigate();
 
-  useScroll({top: 0, behavior: "instant"});
+  useScroll({options: {top: 0, behavior: "instant"}});
 
   return (
     <main className="main">

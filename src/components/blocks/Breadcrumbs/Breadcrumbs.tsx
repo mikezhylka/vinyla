@@ -8,17 +8,16 @@ import styles from "./index.module.scss";
 
 export const Breadcrumbs: React.FC = () => {
   const { breadcrumbsLinkRef } = useAppContext();
-  const location = useLocation();
+  const { pathname } = useLocation();
   const navigate = useNavigate();
-  const windowSize = useWindowSize();
-  const { width } = windowSize;
+  const { width } = useWindowSize();
   const notOnDesktop = width && width < desktopWidth;
 
   function isPathActive(path: string) {
     return path !== "" && path !== "product" && !+path;
   }
 
-  const activePathSegments = location.pathname.split("/").filter(isPathActive); // exclude not active paths
+  const activePathSegments = pathname.split("/").filter(isPathActive); // exclude not active paths
 
   return (
     <div className={styles.breadcrumbs}>

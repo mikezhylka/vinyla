@@ -13,11 +13,12 @@ type Props = {
 
 export const CartProduct: React.FC<Props> = ({ product, usedFor }) => {
   const { setCartProducts, setCartQuantities } = useCartContext();
-  const navigate = useNavigate();
-  const navigateToProduct = () => navigate(`/shop/product/${product.id}`);
-  const width = useWindowSize().width;
-
+  const { width } = useWindowSize();
   const { price, title, photo } = product;
+  const navigate = useNavigate();
+  const isOnMobile = width && width < 640;
+
+  const navigateToProduct = () => navigate(`/shop/product/${product.id}`);
 
   function handleProductDeletion() {
     setCartProducts((prev) =>
@@ -34,10 +35,10 @@ export const CartProduct: React.FC<Props> = ({ product, usedFor }) => {
   return usedFor === "shoppingCart" ? (
     <tr
       className={cn(styles["cart-table__product-row"], {
-        [styles["cart-table__product-row--mobile"]]: width && width < 640,
+        [styles["cart-table__product-row--mobile"]]: isOnMobile,
       })}
     >
-      {width && width < 640 ? (
+      {isOnMobile ? (
         <th scope="row" className={styles.th}>
           <article
             className={cn(

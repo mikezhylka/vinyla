@@ -9,15 +9,14 @@ import { genresList, productsPerPage } from "./config";
 import "./index.scss";
 
 export const ShopPage: React.FC = () => {
-  const { genre, page } = useParams();
   const [appliedGenre, setAppliedGenre] = useState("");
-  const location = useLocation();
-  const path = location.pathname;
-  const behavior = path === "/shop" ? "instant" : "smooth";
-
-  useScroll({ top: 0, behavior });
-  
   const navigate = useNavigate();
+  const { genre, page } = useParams();
+  const { pathname } = useLocation();
+  const behavior = pathname === "/shop" ? "instant" : "smooth";
+
+  useScroll({ options: { top: 0, behavior } });
+
   const normalizedPage = page ? +page : 1;
 
   function addGenresItemClassName(genre: string) {

@@ -5,8 +5,7 @@ import styles from "./index.module.scss";
 
 export const CouponSection: React.FC = () => {
   const [isOnDesktop, setIsOnDesktop] = useState(false);
-  const windowSize = useWindowSize();
-  const { width } = windowSize;
+  const { width } = useWindowSize();
 
   useEffect(() => {
     if (width) {

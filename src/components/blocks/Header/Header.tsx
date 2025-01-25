@@ -11,11 +11,13 @@ export const Header: React.FC = () => {
   const { isProductPageOpened } = useProductContext();
   const { cartProducts } = useCartContext();
   const [showBanner, setShowBanner] = useState(false);
-  const location = useLocation().pathname;
+  const { pathname } = useLocation();
 
   useEffect(() => {
-    return location === "/" ? setShowBanner(true) : setShowBanner(false);
-  }, [location]);
+    return pathname === "/" ? setShowBanner(true) : setShowBanner(false);
+  }, [pathname]);
+
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   return (
     <header
@@ -30,11 +32,11 @@ export const Header: React.FC = () => {
         <NavLink
           className="header__brand-link"
           to={"/"}
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          onClick={scrollToTop}
         />
         <div className="header__menu-cart-wrap">
           <div className="header__menu header__menu-toggle">
-            {location === "/menu" ? (
+            {pathname === "/menu" ? (
               <NavLink
                 className="header__menu-link header__menu-link--exit"
                 to="/"

@@ -29,11 +29,7 @@ export const CartPage: React.FC = () => {
     isFormSubmited,
   } = useCartContext();
 
-  const windowSize = useWindowSize();
-  const { width } = windowSize;
-  const total: number = subtotal + shippingPrice;
-
-  useScroll({ top: 0, behavior: "smooth" });
+  useScroll({options: { top: 0, behavior: "smooth" }});
 
   useEffect(() => {
     return () => {
@@ -41,7 +37,6 @@ export const CartPage: React.FC = () => {
         setActiveCartStep(1);
       }
     };
-    // adding isFormSubmitted
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [setActiveCartStep]);
 
@@ -60,6 +55,9 @@ export const CartPage: React.FC = () => {
         !Object.keys(purchasedProducts).length
     );
   }, [cartProducts, purchasedProducts, setIsCartEmpty]);
+  
+  const { width } = useWindowSize();
+  const total: number = subtotal + shippingPrice;
 
   if (isCartEmpty) {
     return (

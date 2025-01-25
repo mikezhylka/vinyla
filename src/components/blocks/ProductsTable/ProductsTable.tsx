@@ -7,8 +7,7 @@ import styles from "./index.module.scss";
 
 export const ProductsTable: React.FC = () => {
   const { cartProducts, activeCartStep } = useCartContext();
-  const windowSize = useWindowSize();
-  const { width } = windowSize;
+  const { width } = useWindowSize();
   const onCheckout = activeCartStep === 2;
   const notOnMobile = width && width > 640;
 

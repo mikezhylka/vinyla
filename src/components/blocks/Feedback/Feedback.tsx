@@ -21,8 +21,7 @@ export const Feedback: React.FC<Props> = ({
 }) => {
   const { isProductPageOpened } = useProductContext();
   const [isOnDesktop, setIsOnDesktop] = useState(false);
-  const windowSize = useWindowSize();
-  const { width } = windowSize;
+  const { width } = useWindowSize();
 
   useEffect(() => {
     if (width) setIsOnDesktop(width >= 1440);

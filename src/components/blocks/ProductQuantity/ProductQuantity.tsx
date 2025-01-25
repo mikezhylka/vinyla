@@ -28,8 +28,6 @@ export const ProductQuantity: React.FC<Props> = ({ product }) => {
     }
   }, [product, cartQuantities, setCartQuantities]);
 
-  useEffect(() => {}, [cartQuantities]);
-
   const changeProductQuantity = useCallback(
     (operation: "increment" | "decrement") => {
       if (onCartPage && product) {

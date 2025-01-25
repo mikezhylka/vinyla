@@ -1,6 +1,7 @@
 import { useWindowSize } from "@uidotdev/usehooks";
 import cn from "classnames";
 import { useEffect, useState } from "react";
+import { desktopWidth, tabletWidth } from "../../../../../../config";
 import { useCartContext } from "../../../../../../contexts/Cart/useCartContext";
 import { useScroll } from "../../../../../../hooks/useScroll";
 import { ProductsTable } from "../../../../../blocks/ProductsTable/ProductsTable";
@@ -33,8 +34,8 @@ export const StepTwoSection: React.FC<Props> = ({ total }) => {
 
   const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
   const { width } = useWindowSize();
-  const onDesktop = width && width > 1440;
-  const onTablet = width && width >= 640 && !onDesktop;
+  const onDesktop = width && width >= desktopWidth;
+  const onTablet = width && width >= tabletWidth && !onDesktop;
 
   useScroll({options: {top: 0, behavior: "instant"}});
 

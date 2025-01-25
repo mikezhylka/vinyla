@@ -34,6 +34,7 @@ import { Product } from "../../../types/Product";
 import { productCharsBarTitles } from "./config";
 
 // Styles
+import { desktopWidth, tabletWidth } from "../../../config";
 import { useScroll } from "../../../hooks/useScroll";
 import styles from "./index.module.scss";
 
@@ -67,12 +68,12 @@ export const ProductPage: React.FC = () => {
   }, [setIsProductPageOpened]);
 
   useEffect(() => {
-    if (width && width > 640) {
+    if (width && width >= tabletWidth) {
       setRecProdsPerPage(4);
     }
 
     if (width) {
-      setIsOnDesktop(width >= 1440);
+      setIsOnDesktop(width >= desktopWidth);
     }
   }, [width, setRecProdsPerPage]);
 

@@ -1,5 +1,6 @@
 import { useWindowSize } from "@uidotdev/usehooks";
 import cn from "classnames";
+import { tabletWidth } from "../../../config";
 import { useCartContext } from "../../../contexts/Cart/useCartContext";
 import { CartProduct } from "../../pages/Cart/components/CartProduct";
 import { addTableTitleClassName } from "../../pages/Cart/handlers";
@@ -9,7 +10,7 @@ export const ProductsTable: React.FC = () => {
   const { cartProducts, activeCartStep } = useCartContext();
   const { width } = useWindowSize();
   const onCheckout = activeCartStep === 2;
-  const notOnMobile = width && width > 640;
+  const notOnMobile = width && width > tabletWidth;
 
   return (
     <table

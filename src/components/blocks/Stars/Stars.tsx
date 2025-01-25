@@ -4,7 +4,7 @@ import { Comment } from "../../../types/Comment";
 import { Product } from "../../../types/Product";
 import { addStarClassName, addStarPicture } from "./handlers";
 
-import styles from '../../pages/Product/index.module.scss';
+import styles from "../../pages/Product/index.module.scss";
 
 type Props = {
   currentProduct?: Product;
@@ -26,7 +26,11 @@ export const Stars: React.FC<Props> = ({ currentProduct, currentComment }) => {
   }
 
   return (
-    <div className={classNames(usedFor === 'product' ? styles["product__stars"] : "feedback__stars")}>
+    <div
+      className={classNames(
+        usedFor === "product" ? styles["product__stars"] : "feedback__stars"
+      )}
+    >
       {Array.from({ length: 5 }).map((_, index) => (
         <img
           key={index} // this array is static

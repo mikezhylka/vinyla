@@ -1,6 +1,7 @@
 import { useWindowSize } from "@uidotdev/usehooks";
 import cn from "classnames";
 import { useEffect, useState } from "react";
+import { desktopWidth } from "../../../../../../../../config";
 import styles from "./index.module.scss";
 
 export const CouponSection: React.FC = () => {
@@ -9,7 +10,7 @@ export const CouponSection: React.FC = () => {
 
   useEffect(() => {
     if (width) {
-      setIsOnDesktop(width >= 1440);
+      setIsOnDesktop(width >= desktopWidth);
     }
   }, [width]);
 

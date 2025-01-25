@@ -1,6 +1,7 @@
 import { useWindowSize } from "@uidotdev/usehooks";
 import cn from "classnames";
 import { useEffect, useState } from "react";
+import { desktopWidth } from "../../../config";
 import { useProductContext } from "../../../contexts/Product/useProductContext";
 import { Comment } from "../../../types/Comment";
 import { Product } from "../../../types/Product";
@@ -24,7 +25,7 @@ export const Feedback: React.FC<Props> = ({
   const { width } = useWindowSize();
 
   useEffect(() => {
-    if (width) setIsOnDesktop(width >= 1440);
+    if (width) setIsOnDesktop(width >= desktopWidth);
   }, [width]);
 
   const commentsLength = isOnDesktop && currentProduct?.comments.length;

@@ -1,4 +1,5 @@
 import cn from "classnames";
+import { tabletWidth } from "../../../config";
 import { CartStep } from "../../../types/CartStep";
 import styles from "./index.module.scss";
 
@@ -20,5 +21,7 @@ export function calculateVisibleCartSteps(
   cartSteps: CartStep[],
   activeCartStep: number
 ) {
-  return width && width < 640 ? cartSteps.slice(activeCartStep - 1) : cartSteps;
+  return width && width < tabletWidth
+    ? cartSteps.slice(activeCartStep - 1)
+    : cartSteps;
 }

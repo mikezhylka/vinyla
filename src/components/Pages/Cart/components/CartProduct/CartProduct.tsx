@@ -1,6 +1,7 @@
 import { useWindowSize } from "@uidotdev/usehooks";
 import cn from "classnames";
 import { useNavigate } from "react-router";
+import { tabletWidth } from "../../../../../config";
 import { useCartContext } from "../../../../../contexts/Cart/useCartContext";
 import { CartProduct as CartProductType } from "../../../../../types/CartProduct";
 import { ProductQuantity } from "../../../../blocks/ProductQuantity";
@@ -16,7 +17,7 @@ export const CartProduct: React.FC<Props> = ({ product, usedFor }) => {
   const { width } = useWindowSize();
   const { price, title, photo } = product;
   const navigate = useNavigate();
-  const isOnMobile = width && width < 640;
+  const isOnMobile = width && width < tabletWidth;
 
   const navigateToProduct = () => navigate(`/shop/product/${product.id}`);
 

@@ -1,4 +1,4 @@
-import classNames from "classnames";
+import cn from "classnames";
 import { NavLink } from "react-router";
 import { useProductContext } from "../../../contexts/Product/useProductContext";
 import { topBarLinks } from "../../blocks/Header/config";
@@ -17,9 +17,9 @@ export const Menu: React.FC = () => {
                 <NavLink
                   to={item.link}
                   className={({ isActive }) => {
-                    return classNames("menu__link", {
+                    return cn("menu__link", {
                       "menu__link--active": isActive,
-                      "menu__link--buy-in-one-click": item.id === 4
+                      "menu__link--buy-in-one-click": item.id === 4,
                     });
                   }}
                   onClick={() => setIsMenuShown(false)}

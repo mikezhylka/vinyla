@@ -1,4 +1,4 @@
-import classNames from "classnames";
+import cn from "classnames";
 import { useEffect, useState } from "react";
 import { Comment } from "../../../types/Comment";
 import { Product } from "../../../types/Product";
@@ -27,7 +27,7 @@ export const Stars: React.FC<Props> = ({ currentProduct, currentComment }) => {
 
   return (
     <div
-      className={classNames(
+      className={cn(
         usedFor === "product" ? styles["product__stars"] : "feedback__stars"
       )}
     >

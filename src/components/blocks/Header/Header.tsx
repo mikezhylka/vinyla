@@ -1,4 +1,4 @@
-import classNames from "classnames";
+import cn from "classnames";
 import { useEffect, useState } from "react";
 import { NavLink, useLocation } from "react-router";
 import { useCartContext } from "../../../contexts/Cart/useCartContext";
@@ -20,12 +20,9 @@ export const Header: React.FC = () => {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   return (
-    <header
-      className="header"
-      style={{ height: showBanner ? "100vh" : "auto" }}
-    >
+    <header className={cn("header", { "header--home-page": showBanner })}>
       <div
-        className={classNames("header__top-bar", {
+        className={cn("header__top-bar", {
           "header__top-bar--product-page": isProductPageOpened,
         })}
       >
@@ -57,7 +54,7 @@ export const Header: React.FC = () => {
                   <NavLink
                     to={item.link}
                     className={({ isActive }) => {
-                      return classNames("header__link", {
+                      return cn("header__link", {
                         "header__link--active": isActive,
                       });
                     }}

@@ -15,7 +15,7 @@ export const ShopPage: React.FC = () => {
   const { pathname } = useLocation();
   const behavior = pathname === "/shop" ? "instant" : "smooth";
 
-  useScroll({ options: { top: 0, behavior } });
+  useScroll({ options: { top: 0, behavior }, deps: [page, pathname] });
 
   const normalizedPage = page ? +page : 1;
 

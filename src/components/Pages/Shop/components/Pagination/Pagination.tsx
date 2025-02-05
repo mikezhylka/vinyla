@@ -13,12 +13,17 @@ export const Pagination: React.FC<Props> = ({ page }) => {
   const pages = Math.ceil(products.length / productsPerPage);
   const currentPage = page;
 
+  function navigate(to: number): string {
+    return `/shop/pages/${to.toString()}`;
+  }
+
   return (
     <div className="pagination">
       <ArrowButton
         cn="pagination__arrow arrow arrow--pagination arrow--pagination--prev"
         usedFor="pagination"
         type="prev"
+        to={navigate(currentPage - 1)}
       />
 
       <div className="pagination__pages">
@@ -37,6 +42,7 @@ export const Pagination: React.FC<Props> = ({ page }) => {
         cn="pagination__arrow arrow arrow--pagination arrow--pagination--next"
         usedFor="pagination"
         type="next"
+        to={navigate(currentPage + 1)}
       />
     </div>
   );

@@ -17,7 +17,7 @@ export const Breadcrumbs: FC<Props> = ({
   disabledPath,
   cnModifier,
 }) => {
-  const { breadcrumbsLinkRef, isOnDesktop } = useAppContext();
+  const { isOnDesktop } = useAppContext();
   const { pathname } = useLocation();
   const navigate = useNavigate();
 
@@ -25,11 +25,15 @@ export const Breadcrumbs: FC<Props> = ({
     () =>
       pathname
         .trim()
-        .slice(1) // get rid of first slash in path
+        .slice(1) // get rid of first slash in path to prevent double slash
         .split("/")
         .filter((path) => path !== omittedPath && !parseInt(path)), // exclude URL Params like productId and Prop if given
     [omittedPath, pathname]
   );
+
+  function handleNavigation() {
+    return pathname.includes("shop") ? "/shop" : "/"; // !IMPORTANT arrow btn navigates not to home page only on product page, might need fix in future
+  }
 
   return (
     <div
@@ -42,6 +46,7 @@ export const Breadcrumbs: FC<Props> = ({
           cn="breadcrumbs__arrow arrow arrow--breadcrumbs"
           usedFor="breadcrumb"
           type="prev"
+          to={handleNavigation()}
         />
       )}
       <img
@@ -61,7 +66,6 @@ export const Breadcrumbs: FC<Props> = ({
                 [styles["breadcrumbs__link--disabled"]]: part === disabledPath,
               })}
               to={link}
-              ref={breadcrumbsLinkRef}
             >
               / <span className={styles["breadcrumbs__link-text"]}>{part}</span>{" "}
             </NavLink>

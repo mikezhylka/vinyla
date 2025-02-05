@@ -65,12 +65,10 @@ The checkout consists of **3 steps**:
 
 ---
 
-## 🎨 Design
+## 🎨 Links
 The Figma design for this project is available at the following link:  
 [View Design in Figma](https://www.figma.com/design/nBrWSDW3mf1sgOlWxod1ZQ/Design?node-id=0-1&t=Ukwq32gBlFLcQj0N-1)
-
----
-
+And the page:
 [Open Demo Page](https://mikezhylka.github.io/vinyla-shop/)  
 
 ---

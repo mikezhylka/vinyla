@@ -1,12 +1,10 @@
-import { useWindowSize } from "@uidotdev/usehooks";
 import cn from "classnames";
-import { useEffect, useState } from "react";
-import { desktopWidth } from "../../../constants/breakpoints";
+import { useAppContext } from "../../../contexts/App/useAppContext";
 import { useProductContext } from "../../../contexts/Product/useProductContext";
 import { Comment } from "../../../types/Comment";
 import { Product } from "../../../types/Product";
 import { Stars } from "../Stars/Stars";
-import "./feedback.scss";
+import styles from "./Feedback.module.scss";
 import { addFeedbackDescription, handleFeedbackAnimation } from "./handlers";
 
 type Props = {
@@ -21,53 +19,55 @@ export const Feedback: React.FC<Props> = ({
   currentProduct,
 }) => {
   const { isProductPageOpened } = useProductContext();
-  const [isOnDesktop, setIsOnDesktop] = useState(false);
-  const { width } = useWindowSize();
-
-  useEffect(() => {
-    if (width) setIsOnDesktop(width >= desktopWidth);
-  }, [width]);
+  const { isOnDesktop } = useAppContext();
 
   const commentsLength = isOnDesktop && currentProduct?.comments.length;
   const commentIndex =
     isOnDesktop &&
-    currentProduct?.comments.findIndex((item) => item === comment);
+    currentProduct?.comments.findIndex((item) => item.id === comment?.id);
+
+  const minCommentsForAnimation = 3;
+  const hasEnoughCommentsForAnimation =
+    isOnDesktop && commentsLength && commentsLength > minCommentsForAnimation;
 
   return isProductPageOpened ? (
     <article
-      className={cn("feedback", "feedback--on-product-page", {
-        "feedback--animation":
-          commentsLength && commentsLength > 3 && isOnDesktop,
+      className={cn(styles["feedback"], styles["feedback--on-product-page"], {
+        [styles["feedback--animation"]]: hasEnoughCommentsForAnimation,
       })}
       style={handleFeedbackAnimation(commentsLength, commentIndex)}
     >
       <img
-        className="feedback__user-logo--on-product-page"
+        className={styles["feedback__user-logo--on-product-page"]}
         src="./images/icons/user-white.svg"
         alt="User logo"
       />
-      <div className="feedback__user--on-product-page">
-        <p className="feedback__description--on-product-page">
+      <div className={styles["feedback__user--on-product-page"]}>
+        <p className={styles["feedback__description--on-product-page"]}>
           {addFeedbackDescription(comment, isOnDesktop)}
         </p>
-        <div className="feedback__rating--on-product-page">
+        <div className={styles["feedback__rating--on-product-page"]}>
           <Stars currentComment={comment} />
-          <p className="feedback__rate-text">{comment?.rate}</p>
+          <p className={styles["feedback__rate-text"]}>{comment?.rate}</p>
         </div>
-        <p className="feedback__username--on-product-page">{comment?.name}</p>
+        <p className={styles["feedback__username--on-product-page"]}>
+          {comment?.name}
+        </p>
       </div>
     </article>
   ) : (
-    <article className={`feedback feedback__${feedback?.id}`}>
-      <div className="feedback__user">
+    <article
+      className={cn(styles["feedback"], styles[`feedback__${feedback?.id}`])}
+    >
+      <div className={styles["feedback__user"]}>
         <img
-          className="feedback__user-logo"
+          className={styles["feedback__user-logo"]}
           src="./images/icons/user-white.svg"
           alt="User logo"
         />
-        <p className="feedback__username">{feedback?.name}</p>
+        <p className={styles["feedback__username"]}>{feedback?.name}</p>
       </div>
-      <p className="feedback__description">{feedback?.description}</p>
+      <p className={styles["feedback__description"]}>{feedback?.description}</p>
     </article>
   );
 };

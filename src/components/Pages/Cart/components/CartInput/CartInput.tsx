@@ -1,9 +1,8 @@
-import cn from "classnames";
-import { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
+import { countries, validations } from "../../../../../constants/input";
 import { useCartContext } from "../../../../../contexts/Cart/useCartContext";
-import { FormValuesType } from "../Steps/StepTwoSection/config";
-import { countries } from "./config";
-import styles from "./index.module.scss";
+import { ConfirmationFormState } from "../../../../../types/ConfirmationFormState";
+import { BaseInput } from "../../../../blocks/BaseInput";
 
 type Props = {
   type: string;
@@ -11,33 +10,31 @@ type Props = {
   autocomplete?: string;
 };
 
-export const Input: React.FC<Props> = ({ type, title, autocomplete }) => {
+export const CartInput: FC<Props> = ({ type, title, autocomplete }) => {
   const { confirmationFormState, setConfirmationFormState } = useCartContext();
-  const [error, setError] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
   const [wasSlashAdded, setWasSlashAdded] = useState(false);
 
-  const err = Object.entries(confirmationFormState).find(
-    (element) => element[0] === title && element[1].error
+  const stateInputError = Object.entries(confirmationFormState).find(
+    ([key, value]) => key === title && value.error
   );
 
   useEffect(() => {
-    if (err) {
-      setError(err[1].error);
+    if (stateInputError) {
+      setErrorMsg(stateInputError[1].error);
     } else {
-      setError("");
+      setErrorMsg("");
     }
-  }, [err]);
+  }, [stateInputError]);
 
-  const errMsg = err && err[1].error;
-
-  const value: string =
-    confirmationFormState[title as keyof FormValuesType]?.value;
+  const stateValue =
+    confirmationFormState[title as keyof ConfirmationFormState]?.value;
 
   function handleSettingError(error: string) {
     return setConfirmationFormState((prev) => ({
       ...prev,
       [title]: {
-        value,
+        value: stateValue,
         error,
       },
     }));
@@ -47,7 +44,7 @@ export const Input: React.FC<Props> = ({ type, title, autocomplete }) => {
     const inputValue = e.target.value.toString().trim();
     const isTwoCharactersLong = inputValue.length === 2;
     const isExpirationDateField = title === "Expiration date";
-  
+
     if (isTwoCharactersLong && isExpirationDateField && !wasSlashAdded) {
       e.target.value += "/";
       setWasSlashAdded(true);
@@ -66,18 +63,6 @@ export const Input: React.FC<Props> = ({ type, title, autocomplete }) => {
 
   function handleBlur(e: React.ChangeEvent<HTMLInputElement>) {
     const { value } = e.target;
-
-    // prettier-ignore
-    const validations: { [key: string]: { regex: RegExp } } = {
-      "First name": { regex: /^[a-zA-Z]{2,50}(?: [a-zA-Z]{2,50})*$/ },
-      "Last name": { regex: /^[a-zA-Z]{2,50}$/ },
-      "Street Address": { regex: /^[a-zA-Z0-9\s.-]{5,100}$/ },
-      "tel": { regex: /[0-9\s()+-]/ },
-      "email": { regex: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/ },
-      "Card number": { regex: /^(?:\d{4} ?){4}$/ },
-      "CVV": { regex: /^\d{3,4}$/ },
-      "Expiration date": { regex: /^(0[1-9]|1[0-2])\/\d{2}$/ },
-    };
 
     if (!value.length) {
       handleSettingError(`${title} should not be empty`);
@@ -100,22 +85,14 @@ export const Input: React.FC<Props> = ({ type, title, autocomplete }) => {
   }
 
   return (
-    <div className={styles["input-wrap"]}>
-      <label className={styles["input-title"]} htmlFor={title}>
-        {title}
-      </label>
-      <input
-        className={cn(styles["input"], { [styles["input--error"]]: error })}
-        type={type}
-        id={title}
-        placeholder={title}
-        value={value}
-        onBlur={(e) => handleBlur(e)}
-        onChange={handleChange}
-        required
-        autoComplete={autocomplete}
-      />
-      {errMsg && <p className={styles["input-wrap__error"]}>{errMsg}</p>}
-    </div>
+    <BaseInput
+      type={type}
+      title={title}
+      typedValue={stateValue}
+      autocomplete={autocomplete}
+      errorMsg={errorMsg}
+      handleBlur={handleBlur}
+      handleChange={handleChange}
+    />
   );
 };

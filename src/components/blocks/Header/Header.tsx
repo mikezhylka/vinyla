@@ -1,61 +1,71 @@
 import cn from "classnames";
-import { useEffect, useState } from "react";
 import { NavLink, useLocation } from "react-router";
 import { useCartContext } from "../../../contexts/Cart/useCartContext";
 import { useProductContext } from "../../../contexts/Product/useProductContext";
 import { topBarLinks } from "./config";
-import "./header.scss";
+import styles from "./Header.module.scss";
 
 export const Header: React.FC = () => {
   const { setIsMenuShown } = useProductContext();
   const { isProductPageOpened } = useProductContext();
   const { cartProducts } = useCartContext();
-  const [showBanner, setShowBanner] = useState(false);
   const { pathname } = useLocation();
-
-  useEffect(() => {
-    return pathname === "/" ? setShowBanner(true) : setShowBanner(false);
-  }, [pathname]);
+  const isHomePage = pathname === "/";
 
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   return (
-    <header className={cn("header", { "header--home-page": showBanner })}>
+    <header
+      className={cn(styles["header"], {
+        [styles["header--home-page"]]: isHomePage,
+      })}
+    >
       <div
-        className={cn("header__top-bar", {
-          "header__top-bar--product-page": isProductPageOpened,
+        className={cn(styles["header__top-bar"], {
+          [styles["header__top-bar--product-page"]]: isProductPageOpened,
         })}
       >
         <NavLink
-          className="header__brand-link"
+          className={styles["header__brand-link"]}
           to={"/"}
           onClick={scrollToTop}
         />
-        <div className="header__menu-cart-wrap">
-          <div className="header__menu header__menu-toggle">
+        <div className={styles["header__menu-cart-wrap"]}>
+          <div
+            className={cn(
+              styles["header__menu"],
+              styles["header__menu-toggle"]
+            )}
+          >
             {pathname === "/menu" ? (
               <NavLink
-                className="header__menu-link header__menu-link--exit"
+                className={cn(
+                  styles["header__menu-link"],
+                  styles["header__menu-link--exit"]
+                )}
                 to="/"
                 onClick={() => setIsMenuShown(false)}
               />
             ) : (
               <NavLink
-                className="header__menu-link header__menu-link--entry"
+                className={cn(
+                  styles["header__menu-link"],
+                  styles["header__menu-link--entry"]
+                )}
                 to="/menu"
                 onClick={() => setIsMenuShown(true)}
               />
             )}
           </div>
-          <nav className="header__navigation">
-            <ul className="header__list">
+          <nav className={styles["header__navigation"]}>
+            <ul className={styles["header__list"]}>
               {topBarLinks.map((item) => (
-                <li className="header__list-item" key={item.id}>
+                <li className={styles["header__list-item"]} key={item.id}>
                   <NavLink
                     to={item.link}
                     className={({ isActive }) => {
-                      return cn("header__link", {
-                        "header__link--active": isActive,
+                      return cn(styles["header__link"], {
+                        [styles["header__link--active"]]: isActive,
                       });
                     }}
                   >
@@ -65,27 +75,38 @@ export const Header: React.FC = () => {
               ))}
             </ul>
           </nav>
-          <div className="header__cart">
-            <NavLink className="header__cart-link" to={"/cart"} />
-            <p className="header__cart-quantity">
+          <NavLink
+            to={"/favorites"}
+            className={({ isActive }) => {
+              return isActive
+                ? styles["header__favorites-link--active"]
+                : styles["header__favorites-link"];
+            }}
+          />
+          <div className={styles["header__cart"]}>
+            <NavLink className={styles["header__cart-link"]} to={"/cart"} />
+            <p className={styles["header__cart-quantity"]}>
               {Object.entries(cartProducts)?.length}
             </p>
           </div>
         </div>
       </div>
-      {showBanner && (
-        <div className="header__hero">
-          <p className="header__hero-subtitle">Vinyla Corner</p>
-          <h1 className="header__hero-title">
+      {isHomePage && (
+        <div className={styles["header__hero"]}>
+          <p className={styles["header__hero-subtitle"]}>Vinyla Corner</p>
+          <h1 className={styles["header__hero-title"]}>
             Vinyla Corner: Where Music Spins <br />
-            It's <span className="header__hero-title-bold">Best Stories!</span>
+            It's{" "}
+            <span className={styles["header__hero-title-bold"]}>
+              Best Stories!
+            </span>
           </h1>
-          <p className="header__hero-tagline">
+          <p className={styles["header__hero-tagline"]}>
             Dive into timeless melodies at our vinyl shop, where classic tunes
             await
           </p>
-          <button className="header__hero-button">
-            <NavLink to="/shop" className="header__hero-button__link">
+          <button className={styles["header__hero-button"]}>
+            <NavLink to="/shop" className={styles["header__hero-button__link"]}>
               Buy
             </NavLink>
           </button>

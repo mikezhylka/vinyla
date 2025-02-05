@@ -1,6 +1,7 @@
 import { infiniteScrollDuration } from "../../../constants/breakpoints";
 import { Comment } from "../../../types/Comment";
 
+// Used to make feedback description shorter if it has more than 45 chars because design looks awful if feedbacks have different sizes
 export function addFeedbackDescription(
   comment: Comment | undefined,
   isOnDesktop: boolean

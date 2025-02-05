@@ -1,6 +1,8 @@
 @use "/src/styles/utils/_mixins.scss" as *;
 
 .feedbacks {
+  @include apply-appear-on-scroll;
+
   margin-block: 40px 120px;
 
   @include on-desktop {

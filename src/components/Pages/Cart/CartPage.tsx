@@ -88,7 +88,7 @@ export const CartPage: React.FC = () => {
 
   return (
     <main className={styles.main}>
-      <Breadcrumbs />
+      <Breadcrumbs disabledPath={"cart"} />
       <div className={styles["cart-steps"]}>
         {visibleCartSteps.map((currentStep) => (
           <CartStep key={currentStep.stepNumber} currentStep={currentStep} />

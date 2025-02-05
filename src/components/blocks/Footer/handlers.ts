@@ -1,8 +1,11 @@
 import cn from "classnames";
+import styles from "./Footer.module.scss";
 
 export function addFooterItemClassName(link: string) {
   return cn(
-    "footer__item",
-    link !== "Privacy Policy" ? "footer__item--sm" : "footer__item--policy"
+    styles["footer__item"],
+    link !== "Privacy Policy"
+      ? styles["footer__item--sm"]
+      : styles["footer__item--policy"]
   );
 }

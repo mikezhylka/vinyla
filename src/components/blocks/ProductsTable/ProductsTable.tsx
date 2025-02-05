@@ -10,7 +10,7 @@ export const ProductsTable: React.FC = () => {
   const { cartProducts, activeCartStep } = useCartContext();
   const { width } = useWindowSize();
   const onCheckout = activeCartStep === 2;
-  const notOnMobile = width && width > tabletWidth;
+  const notOnMobile = width && width >= tabletWidth;
 
   return (
     <table

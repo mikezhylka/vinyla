@@ -12,7 +12,7 @@ export const RadioInput: React.FC<Props> = ({ title, pricing }) => {
     useCartContext();
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-    const value = e.target.value;
+    const { value } = e.target;
     const isChoosingPaymentMethod = value === "Credit card" || value === "Cash";
 
     if (isChoosingPaymentMethod) {

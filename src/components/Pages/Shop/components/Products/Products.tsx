@@ -30,7 +30,7 @@ export const Products: React.FC<Props> = ({ page, genre }) => {
         <ProductCart
           key={product.id}
           product={product}
-          className="products__product product"
+          cn="products__product product"
         />
       ))}
     </section>

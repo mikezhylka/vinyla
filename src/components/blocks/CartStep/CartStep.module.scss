@@ -11,7 +11,7 @@
 
     @include on-mobile {
       width: max-content;
-      padding-right: 30px; // for extra border
+      padding-right: 30px;
     }
 
     &--active {

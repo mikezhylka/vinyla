@@ -6,7 +6,6 @@ type Link = {
 
 export const topBarLinks: Link[] = [
   { id: 1, title: "services", link: "/services" },
-  { id: 2, title: "faq", link: "/faq" },
   { id: 3, title: "contact", link: "/contact" },
   { id: 4, title: "buy in one click", link: "/shop" },
 ];

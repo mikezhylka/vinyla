@@ -1,18 +1,23 @@
 import { useWindowSize } from "@uidotdev/usehooks";
 import cn from "classnames";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { tabletWidth } from "../../../../../../constants/breakpoints";
 import {
-  desktopWidth,
-  tabletWidth,
-} from "../../../../../../constants/breakpoints";
+  addressTitles,
+  cardTitles,
+  CONFIRMATION_FORM_ADDRESS_INPUTS_LENGTH,
+  CONFIRMATION_FORM_CARD_INPUTS_LENGTH,
+  confirmationFormInitValues,
+  STANDARD_CONFIRMATION_FORM_LENGTH,
+} from "../../../../../../constants/forms";
+import { useAppContext } from "../../../../../../contexts/App/useAppContext";
 import { useCartContext } from "../../../../../../contexts/Cart/useCartContext";
 import { useScroll } from "../../../../../../hooks/useScroll";
 import { ProductsTable } from "../../../../../blocks/ProductsTable/ProductsTable";
 import { normalizePrice } from "../../../handlers";
+import { CartInput } from "../../CartInput/CartInput";
 import { CartProduct } from "../../CartProduct/CartProduct";
-import { Input } from "../../Input";
 import { RadioInput } from "../../RadioInput/RadioInput";
-import { FormInitValues } from "./config";
 import styles from "./index.module.scss";
 
 type Props = {
@@ -20,6 +25,7 @@ type Props = {
 };
 
 export const StepTwoSection: React.FC<Props> = ({ total }) => {
+  const { isOnDesktop } = useAppContext();
   const {
     confirmationFormState,
     setConfirmationFormState,
@@ -35,20 +41,68 @@ export const StepTwoSection: React.FC<Props> = ({ total }) => {
     setIsFormSubmited,
   } = useCartContext();
 
-  const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
   const { width } = useWindowSize();
-  const onDesktop = width && width >= desktopWidth;
-  const onTablet = width && width >= tabletWidth && !onDesktop;
+  const onTablet = width && width >= tabletWidth && !isOnDesktop;
+  const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
 
   useScroll({ options: { top: 0, behavior: "instant" } });
 
-  useEffect(() => {
-    const allInputsFilled: boolean = Object.values(confirmationFormState).every(
-      (input) => !input.error.length && input.value.length
+  const areAllInputsValid = useCallback(() => {
+    let filteredState = Object.entries(confirmationFormState).filter(
+      (input) => {
+        const { value, error } = input[1];
+
+        return value.length > 0 && !error.length;
+      }
     );
 
-    setIsSubmitDisabled(!allInputsFilled);
-  }, [confirmationFormState]);
+    if (!isPayingByCard && isPickUpChosen) {
+      filteredState = filteredState.filter(
+        (input) =>
+          !cardTitles.includes(input[0]) && !addressTitles.includes(input[0])
+      );
+
+      return (
+        filteredState.length ===
+        STANDARD_CONFIRMATION_FORM_LENGTH -
+          CONFIRMATION_FORM_ADDRESS_INPUTS_LENGTH -
+          CONFIRMATION_FORM_CARD_INPUTS_LENGTH
+      );
+    }
+
+    if (isPickUpChosen) {
+      filteredState = filteredState.filter(
+        (input) => !addressTitles.includes(input[0])
+      );
+
+      return (
+        filteredState.length ===
+        STANDARD_CONFIRMATION_FORM_LENGTH -
+          CONFIRMATION_FORM_ADDRESS_INPUTS_LENGTH
+      );
+    }
+    if (!isPayingByCard) {
+      filteredState = filteredState.filter(
+        (input) => !cardTitles.includes(input[0])
+      );
+
+      return (
+        filteredState.length ===
+        STANDARD_CONFIRMATION_FORM_LENGTH - CONFIRMATION_FORM_CARD_INPUTS_LENGTH
+      );
+    } else {
+      return filteredState.length === STANDARD_CONFIRMATION_FORM_LENGTH;
+    }
+  }, [confirmationFormState, isPickUpChosen, isPayingByCard]);
+
+  useEffect(() => {
+    setIsSubmitDisabled(!areAllInputsValid());
+  }, [
+    isPickUpChosen,
+    setIsSubmitDisabled,
+    confirmationFormState,
+    areAllInputsValid,
+  ]);
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -57,7 +111,7 @@ export const StepTwoSection: React.FC<Props> = ({ total }) => {
     setCartQuantities({});
     setIsFormSubmited(true);
     setActiveCartStep(3);
-    setConfirmationFormState({ ...FormInitValues });
+    setConfirmationFormState({ ...confirmationFormInitValues });
   }
 
   return (
@@ -83,19 +137,19 @@ export const StepTwoSection: React.FC<Props> = ({ total }) => {
           >
             Contact Information
           </h4>
-          {onDesktop ? ( // wrap inputs to have two of them in one line
+          {isOnDesktop ? ( // wrap inputs to have two of them in one line
             <div className={styles["form__section-inputs-wrap"]}>
-              <Input type="text" title="First name" />
-              <Input type="text" title="Last name" />
+              <CartInput type="text" title="First name" />
+              <CartInput type="text" title="Last name" />
             </div>
           ) : (
             <>
-              <Input type="text" title="First name" />
-              <Input type="text" title="Last name" />
+              <CartInput type="text" title="First name" />
+              <CartInput type="text" title="Last name" />
             </>
           )}
-          <Input type="tel" title="Phone number" />
-          <Input type="email" title="Email" />
+          <CartInput type="tel" title="Phone number" />
+          <CartInput type="email" title="Email" />
         </section>
 
         {!isPickUpChosen && (
@@ -113,18 +167,18 @@ export const StepTwoSection: React.FC<Props> = ({ total }) => {
             >
               Shipping Address
             </h4>
-            <Input type="text" title="Country" />
-            <Input type="text" title="Town/City" />
-            <Input type="text" title="Street Address" />
-            {onDesktop ? (
+            <CartInput type="text" title="Country" />
+            <CartInput type="text" title="Town/City" />
+            <CartInput type="text" title="Street Address" />
+            {isOnDesktop ? (
               <div className={styles["form__section-inputs-wrap"]}>
-                <Input type="text" title="State" />
-                <Input type="text" title="ZIP code" />
+                <CartInput type="text" title="State" />
+                <CartInput type="text" title="ZIP code" />
               </div>
             ) : (
               <>
-                <Input type="text" title="State" />
-                <Input type="text" title="ZIP code" />
+                <CartInput type="text" title="State" />
+                <CartInput type="text" title="ZIP code" />
               </>
             )}
           </section>
@@ -148,18 +202,18 @@ export const StepTwoSection: React.FC<Props> = ({ total }) => {
           <RadioInput title="Cash" />
           {isPayingByCard && (
             <>
-              <Input
+              <CartInput
                 type="number"
                 title="Card number"
                 autocomplete="cc-number"
               />
               <div className={styles["form__section-inputs-wrap"]}>
-                <Input
+                <CartInput
                   type="text"
                   title="Expiration date"
                   autocomplete="cc-exp"
                 />
-                <Input type="number" title="CVV" autocomplete="cc-csc" />
+                <CartInput type="number" title="CVV" autocomplete="cc-csc" />
               </div>
             </>
           )}

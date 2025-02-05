@@ -1,14 +1,12 @@
-import { useEffect, useState } from "react";
 import { normalizePrice } from "../../../handlers";
 
 import { ProductsTable } from "../../../../../blocks/ProductsTable";
 import { RadioInput } from "../../RadioInput";
 import { CouponSection } from "./components/CouponSection";
 
-import { useWindowSize } from "@uidotdev/usehooks";
 import { useCartContext } from "../../../../../../contexts/Cart/useCartContext";
 
-import { desktopWidth } from "../../../../../../constants/breakpoints";
+import { useAppContext } from "../../../../../../contexts/App/useAppContext";
 import styles from "./index.module.scss";
 
 type Props = {
@@ -17,14 +15,7 @@ type Props = {
 
 export const StepOneSection: React.FC<Props> = ({ total }) => {
   const { subtotal, shippingPrice, setActiveCartStep } = useCartContext();
-  const [isOnDesktop, setIsOnDesktop] = useState(false);
-  const { width } = useWindowSize();
-
-  useEffect(() => {
-    if (width) {
-      setIsOnDesktop(width >= desktopWidth);
-    }
-  }, [width]);
+  const { isOnDesktop } = useAppContext();
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();

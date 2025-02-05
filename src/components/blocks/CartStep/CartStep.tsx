@@ -1,7 +1,7 @@
 import cn from "classnames";
 import { useCartContext } from "../../../contexts/Cart/useCartContext";
 import { CartStep as CartStepType } from "../../../types/CartStep";
-import "./index.scss";
+import styles from "./CartStep.module.scss";
 
 type Props = {
   currentStep: CartStepType;
@@ -14,9 +14,9 @@ export const CartStep: React.FC<Props> = ({ currentStep }) => {
   const isStepCompleted = activeCartStep > stepNumber;
 
   function handleAddingClassName(className: string) {
-    return cn(className, {
-      [`${className}--active`]: isStepActive,
-      [`${className}--completed`]: isStepCompleted,
+    return cn(styles[className], {
+      [styles[`${className}--active`]]: isStepActive,
+      [styles[`${className}--completed`]]: isStepCompleted,
     });
   }
 

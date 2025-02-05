@@ -15,8 +15,8 @@ type Props = {
 export const CartProduct: React.FC<Props> = ({ product, usedFor }) => {
   const { setCartProducts, setCartQuantities } = useCartContext();
   const { width } = useWindowSize();
-  const { price, title, photo } = product;
   const navigate = useNavigate();
+  const { price, title, photo } = product;
   const isOnMobile = width && width < tabletWidth;
 
   const navigateToProduct = () => navigate(`/shop/product/${product.id}`);

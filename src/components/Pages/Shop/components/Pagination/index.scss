@@ -27,66 +27,6 @@
     }
   }
 
-  &__prev-page {
-    width: 32px;
-    height: 32px;
-    border: 1px solid $white;
-    border-radius: 50%;
-    background-color: inherit;
-    
-    background-image: url('/public/images/icons/previous-page-active.svg');
-    background-repeat: no-repeat;
-    background-position: center;
-  
-    @include on-desktop {
-      width: 48px;
-      height: 48px;
-    }
-
-    &:hover {
-      cursor: pointer;
-      background-color: $neutral-gray;
-    }
-
-    &--disabled {
-      background-image: url('/public/images/icons/previous-page-disabled.svg');
-      pointer-events: none;
-      cursor: default;
-      border-color: $neutral-gray;
-    }
-  }
-
-  &__next-page {
-    width: 32px;
-    height: 32px;
-    border: 1px solid $white;
-    border-radius: 50%;
-    background-color: inherit;
-
-    background-image: url('/public/images/icons/next-page-active.svg');
-    background-repeat: no-repeat;
-    background-position: center;
-
-    @include on-desktop {
-      width: 48px;
-      height: 48px;
-    }
-
-
-    &:hover {
-      background-color: $neutral-gray;
-      border-color: $secondary;
-      cursor: pointer;
-    }
-
-    &--disabled {
-      background-image: url('/public/images/icons/next-page-disabled.svg');
-      border-color: $neutral-gray;
-      pointer-events: none;
-      cursor: default;
-    }
-  }
-
   &__page {
     color: $neutral-gray;
     text-decoration: none;

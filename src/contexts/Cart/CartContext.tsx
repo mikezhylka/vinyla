@@ -1,10 +1,8 @@
 import React, { SetStateAction, useState } from "react";
-import {
-  FormInitValues,
-  FormValuesType,
-} from "../../components/pages/Cart/components/Steps/StepTwoSection/config";
+import { confirmationFormInitValues } from "../../constants/forms";
 import { CartProductAlias } from "../../types/CartProductAlias";
 import { CartQuantities } from "../../types/CartQuantities";
+import { ConfirmationFormState } from "../../types/ConfirmationFormState";
 import { CartContext } from "./createdContext";
 
 export type CartContextProps = {
@@ -26,8 +24,10 @@ export type CartContextProps = {
   setIsPayingByCard: React.Dispatch<SetStateAction<boolean>>;
   isCartEmpty: boolean;
   setIsCartEmpty: React.Dispatch<SetStateAction<boolean>>;
-  confirmationFormState: FormValuesType;
-  setConfirmationFormState: React.Dispatch<SetStateAction<FormValuesType>>;
+  confirmationFormState: ConfirmationFormState;
+  setConfirmationFormState: React.Dispatch<
+    SetStateAction<ConfirmationFormState>
+  >;
   isFormSubmited: boolean;
   setIsFormSubmited: React.Dispatch<SetStateAction<boolean>>;
 };
@@ -44,9 +44,10 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   const [isPickUpChosen, setIsPickUpChosen] = useState(false);
   const [isPayingByCard, setIsPayingByCard] = useState(true);
   const [isCartEmpty, setIsCartEmpty] = useState(false);
-  const [confirmationFormState, setConfirmationFormState] =
-    useState<FormValuesType>(FormInitValues);
-    const [isFormSubmited, setIsFormSubmited] = useState(false);
+  const [confirmationFormState, setConfirmationFormState] = useState<ConfirmationFormState>(
+    confirmationFormInitValues
+  );
+  const [isFormSubmited, setIsFormSubmited] = useState(false);
 
   return (
     <CartContext.Provider

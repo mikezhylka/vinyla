@@ -4,7 +4,7 @@ import { useLocation } from "react-router";
 import { useCartContext } from "../../../contexts/Cart/useCartContext";
 import { useProductContext } from "../../../contexts/Product/useProductContext";
 import { CartProduct } from "../../../types/CartProduct";
-import styles from "./index.module.scss";
+import styles from "./ProductQuantity.module.scss";
 
 type Props = {
   product?: CartProduct;

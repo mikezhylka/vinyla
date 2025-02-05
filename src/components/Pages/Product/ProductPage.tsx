@@ -1,6 +1,6 @@
 import { useWindowSize } from "@uidotdev/usehooks";
 import cn from "classnames";
-import React, { ReactNode, useEffect, useState } from "react";
+import React, { ReactNode, useEffect } from "react";
 import { useParams } from "react-router";
 
 // Contexts
@@ -34,10 +34,9 @@ import { Product } from "../../../types/Product";
 import { productCharsBarTitles } from "./config";
 
 // Styles
-import { desktopWidth, tabletWidth } from "../../../constants/breakpoints";
+import { tabletWidth } from "../../../constants/breakpoints";
 import { useScroll } from "../../../hooks/useScroll";
 import styles from "./index.module.scss";
-
 
 export const ProductPage: React.FC = () => {
   const {
@@ -53,13 +52,12 @@ export const ProductPage: React.FC = () => {
     setPageProductQty,
   } = useProductContext();
   const { cartProducts, setCartProducts, cartQuantities } = useCartContext();
-  const { favProducts, setFavProducts } = useAppContext();
+  const { favProducts, setFavProducts, isOnDesktop } = useAppContext();
 
-  const [isOnDesktop, setIsOnDesktop] = useState(false);
   const { productId } = useParams();
   const { width } = useWindowSize();
 
-  useScroll({options: {top: 0, behavior: "instant"}})
+  useScroll({ options: { top: 0, behavior: "instant" } });
 
   useEffect(() => {
     setIsProductPageOpened(true);
@@ -70,10 +68,6 @@ export const ProductPage: React.FC = () => {
   useEffect(() => {
     if (width && width >= tabletWidth) {
       setRecProdsPerPage(4);
-    }
-
-    if (width) {
-      setIsOnDesktop(width >= desktopWidth);
     }
   }, [width, setRecProdsPerPage]);
 
@@ -126,7 +120,7 @@ export const ProductPage: React.FC = () => {
     <main className="main">
       {isAddedToCart && <AddedToCart />}
 
-      <Breadcrumbs />
+      <Breadcrumbs omittedPath="product" cnModifier="product-page" />
       <article className={styles.product}>
         <div className={styles.product__wrap}>
           <img
@@ -230,9 +224,9 @@ export const ProductPage: React.FC = () => {
         </h2>
         <div className={styles["recommended-products__list"]}>
           <ArrowButton
+            cn="recommended-products__arrow arrow arrow--recommended arrow--recommended--prev"
             usedFor="recommendations"
             type="prev"
-            recommendedProducts={recommendedProducts}
           />
 
           <div className={styles["recommended-products__products"]}>
@@ -245,15 +239,15 @@ export const ProductPage: React.FC = () => {
                 <ProductCart
                   key={product.id}
                   product={product as Product}
-                  className={"product product--on-product-page"}
+                  cn="product product--on-product-page"
                 />
               ))}
           </div>
 
           <ArrowButton
+            cn="recommended-products__arrow arrow arrow--recommended arrow--recommended--next"
             usedFor="recommendations"
             type="next"
-            recommendedProducts={recommendedProducts}
           />
         </div>
       </section>

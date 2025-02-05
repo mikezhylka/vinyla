@@ -1,18 +1,9 @@
-import { useWindowSize } from "@uidotdev/usehooks";
 import cn from "classnames";
-import { useEffect, useState } from "react";
-import { desktopWidth } from "../../../../../../../../constants/breakpoints";
+import { useAppContext } from "../../../../../../../../contexts/App/useAppContext";
 import styles from "./index.module.scss";
 
 export const CouponSection: React.FC = () => {
-  const [isOnDesktop, setIsOnDesktop] = useState(false);
-  const { width } = useWindowSize();
-
-  useEffect(() => {
-    if (width) {
-      setIsOnDesktop(width >= desktopWidth);
-    }
-  }, [width]);
+  const { isOnDesktop } = useAppContext();
 
   return (
     <section

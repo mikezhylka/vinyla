@@ -15,7 +15,11 @@ export const Pagination: React.FC<Props> = ({ page }) => {
 
   return (
     <div className="pagination">
-      <ArrowButton usedFor="pagination" type="prev" />
+      <ArrowButton
+        cn="pagination__arrow arrow arrow--pagination arrow--pagination--prev"
+        usedFor="pagination"
+        type="prev"
+      />
 
       <div className="pagination__pages">
         {Array.from({ length: pages }, (_, i) => i + 1).map((page) => (
@@ -29,7 +33,11 @@ export const Pagination: React.FC<Props> = ({ page }) => {
         ))}
       </div>
 
-      <ArrowButton usedFor="pagination" type="next" />
+      <ArrowButton
+        cn="pagination__arrow arrow arrow--pagination arrow--pagination--next"
+        usedFor="pagination"
+        type="next"
+      />
     </div>
   );
 };

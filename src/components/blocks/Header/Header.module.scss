@@ -258,18 +258,23 @@
   }
 
   &__favorites-link {
-    width: 40px;
-    height: 40px;
+    width: 24px;
+    height: 24px;
+
     background-image: url('/public/images/icons/heart.svg');
-    background-size: 35px;
+    background-size: 100%;
     background-repeat: no-repeat;
     background-position: center;
     transition: transform .4s;
 
+    @include on-desktop {
+      width: 36px;
+      height: 36px;
+    }
+
     &:hover {
       transform: scale(1.1);
     }
-    
 
     &--active {
       width: 40px;

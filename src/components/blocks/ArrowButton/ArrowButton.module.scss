@@ -26,7 +26,7 @@ $arrow--recommended-size-desktop: 48px;
     }
 
     &--prev {
-      background-image: url("./images/icons/previous-page-active.svg");
+      background-image: url("/public/images/icons/previous-page-active.svg");
       background-repeat: no-repeat;
       background-position: center;
 
@@ -36,7 +36,7 @@ $arrow--recommended-size-desktop: 48px;
       }
 
       &:disabled {
-        background-image: url("./images/icons/previous-page-disabled.svg");
+        background-image: url("/public/images/icons/previous-page-disabled.svg");
         pointer-events: none;
         cursor: default;
         border-color: $neutral-gray;
@@ -44,7 +44,7 @@ $arrow--recommended-size-desktop: 48px;
     }
 
     &--next {
-      background-image: url("./images/icons/next-page-active.svg");
+      background-image: url("/public/images/icons/next-page-active.svg");
       background-repeat: no-repeat;
       background-position: center;
 
@@ -55,7 +55,7 @@ $arrow--recommended-size-desktop: 48px;
       }
 
       &:disabled {
-        background-image: url("./images/icons/next-page-disabled.svg");
+        background-image: url("/public/images/icons/next-page-disabled.svg");
         border-color: $neutral-gray;
         pointer-events: none;
         cursor: default;
@@ -77,13 +77,13 @@ $arrow--recommended-size-desktop: 48px;
     }
 
     &--prev {
-      background-image: url("./images/icons/previous-page-active.svg");
+      background-image: url("/public/images/icons/previous-page-active.svg");
       background-position: center;
       background-repeat: no-repeat;
       z-index: 1;
 
       &:disabled {
-        background-image: url("./images/icons/previous-page-disabled.svg");
+        background-image: url("/public/images/icons/previous-page-disabled.svg");
         border-color: $neutral-gray;
 
         &:hover {
@@ -94,13 +94,13 @@ $arrow--recommended-size-desktop: 48px;
     }
 
     &--next {
-      background-image: url("./images/icons/next-page-active.svg");
+      background-image: url("/public//images/icons/next-page-active.svg");
       background-position: center;
       background-repeat: no-repeat;
       right: 0%;
 
       &:disabled {
-        background-image: url("./images/icons/next-page-disabled.svg");
+        background-image: url("/public/images/icons/next-page-disabled.svg");
         border-color: $neutral-gray;
 
         &:hover {

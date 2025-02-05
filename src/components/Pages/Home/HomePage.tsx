@@ -30,13 +30,11 @@ export const HomePage: React.FC = () => {
           magic of Vinyla Corner - where the love for music is timeless, and
           every record tells a story.
         </p>
-        <button className={styles["vinyla-corner__read-more"]}>
-          <a
-            href="#read-more"
-            className={styles["vinyla-corner__read-more__link"]}
-          >
-            Read more
-          </a>
+        <button
+          className={styles["vinyla-corner__read-more"]}
+          onClick={() => navigate("/services")}
+        >
+          Read more
         </button>
       </section>
       <section className={styles["popular-positions"]}>

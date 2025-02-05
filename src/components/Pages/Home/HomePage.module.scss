@@ -46,14 +46,14 @@
     width: 32px;
     height: 32px;
 
-    background-image: url("./images/icons/arrow-up-right.svg");
+    background-image: url("/public/images/icons/arrow-up-right.svg");
     background-size: 100%;
     background-repeat: no-repeat;
-    transition: transform .3s;
+    transition: transform 0.3s;
 
     &:hover {
       transform: scale(1.1);
-      transition: transform .3s;
+      transition: transform 0.3s;
     }
   }
 
@@ -82,12 +82,14 @@
 
   &__read-more {
     @include button;
+    @include button__link;
+
     @include on-desktop {
       grid-column: 2 / 3;
     }
 
-    &__link {
-      @include button__link;
+    &:hover {
+      cursor: pointer;
     }
   }
 }
